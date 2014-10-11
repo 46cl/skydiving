@@ -1,3 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo:700);
+
+@import url(http://fonts.googleapis.com/css?family=Dorsa);
 p,
 blockquote,
 cite {
@@ -23,7 +26,6 @@ body {
   width: 100%;
   height: 26px;
   line-height: 26px;
-  background-color: #4e0707;
   color: #FFF;
   padding: 0 10px;
   overflow: hidden;
@@ -52,6 +54,9 @@ body {
   filter: alpha(opacity=60);
 }
 /* TEMPLATES */
+/*
+ * Template 1
+ */
 .template1 {
   padding: 10% 20%;
 }
@@ -65,4 +70,97 @@ body {
   text-align: right;
   font-size: 40px;
   border-bottom: 5px solid;
+}
+/*
+ * Template 2
+ */
+.template2 {
+  padding: 10% 20%;
+  font-family: helvetica, arial;
+  font-weight: 700;
+}
+.template2 blockquote {
+  font-size: 78px;
+}
+.template2 blockquote p {
+  display: inline;
+  color: #fff;
+}
+.template2 > p {
+  width: 100%;
+  position: relative;
+}
+.template2 > p cite {
+  display: inline-block;
+  position: absolute;
+  font-size: 40px;
+  color: #4e0707;
+  right: 0;
+}
+/*
+ * Template 3 - background b&w
+ */
+.template3 {
+  padding: 10% 20%;
+  font-family: 'Arvo', serif;
+}
+.template3 blockquote {
+  font-size: 78px;
+  border-top: 10px solid;
+  line-height: 80px;
+}
+.template3 cite {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  font-size: 40px;
+  border-bottom: 10px solid;
+}
+/*
+ * Template 4 - integrer du js pour alterner la couleur de la blockquote (http://codepen.io/FWeinb/pen/djuIx) 
+
+
+.template4{
+    padding: 10% 20%;
+    font-family: 'comic sans ms' ;
+
+    blockquote{
+        font-size: 78px;
+
+        &:nth-letter(even){
+          color:red;
+        }
+
+        &:nth-letter(odd){
+            color:blue;
+        }
+    }
+
+    cite{
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        font-size: 40px;
+    }
+}
+ */
+/*
+ * Template 5
+ */
+.template5 {
+  padding: 10% 20%;
+  font-family: 'Dorsa', sans-serif;
+}
+.template5 blockquote {
+  font-size: 150px;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+.template5 cite {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  padding-right: 10px;
+  text-align: right;
+  font-size: 70px;
 }
