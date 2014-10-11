@@ -1,9 +1,10 @@
-package fhacktory
+package fhacktory.crawling
 
 import com.google.common.eventbus.EventBus
 import edu.uci.ics.crawler4j.crawler.Page
 import edu.uci.ics.crawler4j.crawler.WebCrawler
 import edu.uci.ics.crawler4j.url.WebURL
+import fhacktory.Fhacktory
 import fhacktory.event.SkyblogFound
 import groovy.transform.CompileStatic
 import org.slf4j.Logger
@@ -36,7 +37,7 @@ class Crawler extends WebCrawler
     {
         String url = page.getWebURL().getURL()
 
-        logger.debug("Visiting {}", url)
+        //logger.debug("Visiting {}", url)
 
         String domain = (page.webURL.subDomain.length() > 0 ? (page.webURL.subDomain + ".") : "") + page.webURL.domain
         boolean skyblog = domain.indexOf("skyrock.com") > 0 && !domain.startsWith("www") && !domain.startsWith("en")
