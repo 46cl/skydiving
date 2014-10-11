@@ -22,9 +22,9 @@ body{
 .content{
     width: 100%;
     height: 100%;
+    padding: 0 20%;
     background-size: cover;
     background-position: center center;
-    z-index: 1;
 }
 .controls{
     width: 100%;
@@ -34,7 +34,6 @@ body{
     padding: 0 10px;
     overflow: hidden;
     margin-top: -@controlsHeight;
-    z-index: 10;
     transition: opacity .3s ease-in-out;
     -moz-transition: opacity .3s ease-in-out;
     -webkit-transition: opacity .3s ease-in-out;
@@ -70,19 +69,18 @@ body{
  */
 .template1{
     font-family: 'Great Vibes', cursive;
-    padding: 10% 20%;
     -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
     -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
     -webkit-filter: grayscale(100%);
     filter: gray;
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 
-    >.bloc{
+    .bloc1{
         border: 1px solid #FFF;
         padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
 
-        >.bloc{
+        .bloc2{
             border: 1px solid #FFF;
             padding: 50px;
 
@@ -106,7 +104,6 @@ body{
  */
 
 .template2{
-    padding: 10% 20%;
     font-family: helvetica, arial;
     font-weight: 700;
 
@@ -119,7 +116,7 @@ body{
         } 
     }
 
-    &>p {
+    p {
         width: 100%;
         position: relative;
         
@@ -138,7 +135,6 @@ body{
  */
 
 .template3{
-    padding: 10% 20%;
     font-family: 'Arvo', serif;
 
     blockquote{
@@ -162,7 +158,6 @@ body{
  */
 
 .template4{
-    padding: 10% 20%;
     font-family: 'Montserrat', sans-serif;
     
     .bloc {
@@ -197,7 +192,6 @@ body{
  */
 
 .template5{
-    padding: 10% 20%;
     font-family: 'Dorsa', sans-serif;
 
     .bloc {
@@ -227,7 +221,6 @@ body{
  */
 
 .template5{
-    padding: 10% 20%;
     font-family: 'Dorsa', sans-serif;
 
     .bloc {

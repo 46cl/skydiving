@@ -4,11 +4,7 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
-<<<<<<< HEAD
-    templateNb = 4;
-=======
-    templateNb = 1;
->>>>>>> 9594c89dbdba99cb6f1b5ce39bacf308e75835f1
+    templateNb = 5;
     $(".content").addClass("template"+templateNb);
 
     image.onload = function() {
@@ -72,8 +68,14 @@ $(function() {
         $(".content").fadeIn();
     }
 
-    image.src = "fond2.jpg";
+    image.src = "fond3.jpg";
     
+    function onresize() {
+        var marginTop = ($(".content").outerHeight() -  $(".bloc1").outerHeight())/2;
+        $(".content").css("padding-top", marginTop);
+    }
 
+    $( window ).resize(onresize);
+    onresize();
     
 });
