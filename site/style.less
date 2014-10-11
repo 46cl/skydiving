@@ -17,17 +17,26 @@ p, blockquote, cite{
     box-sizing: border-box;
 }
 body{
+    position: relative;
     margin: 0;
     font-family: Helvetica, Arial, Sans-Serif;
     font-size: @defaultFontSize;
+}
+.backgroundImage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 .content{
     width: 100%;
     height: 100%;
     padding: 0 20%;
-    background-size: cover;
-    background-position: center center;
-    z-index: 1;
+    z-index: 10;
 }
 .controls{
     position: absolute;
@@ -62,17 +71,29 @@ body{
         background: url("img/showlist.gif") no-repeat center center;
         cursor: pointer;
     }
-    div{
+    .list{
         opacity: 0.6;
         filter: alpha(opacity=60);
+        background-color: inherit;
     }
     .background{
         position: absolute;
-        top:@controlsHeight;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: @controlsHeight;
+        z-index: -1;
+    }
+    .background2{
+        background-color: #000;
+        position: absolute;
+        top:@controlsHeight;;
         left: 0;
         width: 100%;
         height: 2000px;
-        background-color: inherit;
+        z-index: -1;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
     }
 }
 
@@ -82,12 +103,13 @@ body{
  */
 .template1{
     font-family: 'Great Vibes', cursive;
-    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    -webkit-filter: grayscale(100%);
-    filter: gray;
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-
+    &.backgroundImage{
+        -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -webkit-filter: grayscale(100%);
+        filter: gray;
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    }
     .bloc1{
         border: 1px solid #FFF;
         padding: 10px;
@@ -129,7 +151,7 @@ body{
         } 
     }
 
-    &>p {
+    p {
         width: 100%;
         position: relative;
         
@@ -214,20 +236,20 @@ body{
     }
 
     blockquote{
-        padding-top: 40px;
-        padding-right: 40px;
-        padding-left: 40px;
-        font-size: 100px;
+        padding-top: 60px;
+        padding-right: 60px;
+        padding-left: 60px;
+        font-size: 80px;
         text-align: center;
     }
 
     cite{
         display: inline-block;
         width: 100%;
-        padding-right: 40px;
-        padding-bottom: 30px;
+        padding-right: 60px;
+        padding-bottom: 60px;
         text-align: right;
-        font-size: 60px;
+        font-size: 40px;
     }
 }
 
@@ -237,14 +259,14 @@ body{
 
 .template6{
     text-transform: uppercase;
-    font-family: 'Gilda Display', serif;
-    font-weight: 400;
-    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    -webkit-filter: grayscale(100%);
-    filter: gray;
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    
+    font-family: 'Great Vibes', cursive;
+    &.backgroundImage{
+        -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -webkit-filter: grayscale(100%);
+        filter: gray;
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    }
     p, blockquote, cite {
         font-style: italic;
     }
