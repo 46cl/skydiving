@@ -5,6 +5,8 @@
 @import url(http://fonts.googleapis.com/css?family=Dorsa);
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
+@import url(http://fonts.googleapis.com/css?family=Vidaloka);
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display);
 
 p, blockquote, cite{
     margin: 0;
@@ -221,27 +223,29 @@ body{
  * Template 6
  */
 
-.template5{
-    font-family: 'Dorsa', sans-serif;
-
-    .bloc1 {
-        background-color: rgba(255, 255, 255, 0.5);
-    }
+.template6{
 
     blockquote{
         padding-top: 20px;
         padding-right: 20px;
         padding-left: 20px;
-        font-size: 130px;
-        text-align: center;
+        font-size: 70px;
+        text-align: left;
     }
 
     cite{
+        font-family: 'Playfair Display', serif;
         display: inline-block;
         width: 100%;
         padding-right: 20px;
         padding-bottom: 10px;
         text-align: right;
         font-size: 70px;
+        text-transform: uppercase;
+
+        &::before {
+            content: "-—";
+
+        }
     }
 }
