@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo:700);
 p,
 blockquote,
 cite {
@@ -51,6 +52,9 @@ body {
   filter: alpha(opacity=60);
 }
 /* TEMPLATES */
+/*
+ * Template 1
+ */
 .template1 {
   padding: 10% 20%;
 }
@@ -64,4 +68,50 @@ body {
   text-align: right;
   font-size: 40px;
   border-bottom: 5px solid;
+}
+/*
+ * Template 2
+ */
+.template2 {
+  padding: 10% 20%;
+  font-family: helvetica, arial;
+  font-weight: 700;
+}
+.template2 blockquote {
+  font-size: 78px;
+}
+.template2 blockquote p {
+  background-color: #fff;
+  display: inline;
+  color: #4e0707;
+}
+.template2 > p {
+  width: 100%;
+  position: relative;
+}
+.template2 > p cite {
+  display: inline-block;
+  position: absolute;
+  font-size: 40px;
+  background-color: #4e0707;
+  color: #fff;
+  right: 0;
+}
+/*
+ * Template 3
+ */
+.template3 {
+  padding: 10% 20%;
+  font-family: 'Arvo', serif;
+}
+.template3 blockquote {
+  font-size: 78px;
+  border-top: 10px solid;
+}
+.template3 cite {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  font-size: 40px;
+  border-bottom: 10px solid;
 }
