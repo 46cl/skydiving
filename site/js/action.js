@@ -2,9 +2,10 @@ $(function() {
     var colorThief = new ColorThief();
     var image = new Image();
 
-    /*Choix du template
-    templateNb = Math.round(Math.ceil()*5);
-    $(".content").addClass("template"+templateNb);*/
+    /*Choix du template*/
+    //templateNb = Math.ceil(Math.random()*5);
+    templateNb = 3;
+    $(".content").addClass("template"+templateNb);
 
     image.onload = function() {
         var palette = colorThief.getPalette(image, 9);
@@ -25,30 +26,37 @@ $(function() {
         
 
         if(highSColorHSV[1]<60){
-            alert("fade");
+            //alert("fade");
             var dominentColor = colorThief.getColor(image);        
             dominentColor = $c.rgb2hex(dominentColor[0], dominentColor[1], dominentColor[2]);
             var complementaryColor= $c.complement(dominentColor);
 
             if(dominentColorHSV[1]>50){
                 colorDef = dominentColor
-                alert("dominent");
+                //alert("dominent");
             }else{
                 colorDef = complementaryColor
-                alert("complementary");
+                //alert("complementary");
             }
-
         }else{
             colorDef = highSColorHex;
         }
 
         colorDefComp = $c.complement(colorDef);
 
+
         /*Application du template*/
+        if (templateNb == 1 ){
+            $(".controls").css("background-color", colorDef)
+            $(".content").css("color", colorDef)
+        } else if (templateNb == 2 ){
+            $(".controls").css("background-color", colorDef)
+            $(".content").css("color", colorDef)
+        } else if (templateNb == 3 ){
+            $(".controls").css("background-color", colorDefComp)
+            $(".content").css("color", colorDefComp)
+        }
 
-
-        $(".controls").css("background-color", colorDef)
-        $(".content").css("color", colorDef)
 
         /*Animation du font*/
         $(".content").fadeOut();
@@ -56,7 +64,7 @@ $(function() {
         $(".content").fadeIn();
     }
 
-    image.src = "fond2.jpg";
+    image.src = "fond3.jpg";
     
 
     
