@@ -3,6 +3,7 @@
 
 @import url(http://fonts.googleapis.com/css?family=Arvo:700);
 @import url(http://fonts.googleapis.com/css?family=Dorsa);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 p, blockquote, cite{
     margin: 0;
@@ -134,22 +135,28 @@ body{
 }
 
 /*
- * Template 4 - integrer du js pour alterner la couleur de la blockquote (http://codepen.io/FWeinb/pen/djuIx) 
-
+ * Template 4
+ */
 
 .template4{
     padding: 10% 20%;
-    font-family: 'comic sans ms' ;
+    font-family: 'Montserrat', sans-serif;
+    
+    .bloc {
+        background: url(img/motif.png);
+    }
 
     blockquote{
-        font-size: 78px;
+        font-size: 60px;
+        text-align: center;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
 
-        &:nth-letter(even){
-          color:red;
-        }
+        p {
+            border-bottom: 3px solid;
+            display: inline;
 
-        &:nth-letter(odd){
-            color:blue;
         }
     }
 
@@ -158,11 +165,42 @@ body{
         width: 100%;
         text-align: right;
         font-size: 40px;
+        padding-right: 20px;
+        padding-bottom: 10px;
     }
 }
- */
 /*
  * Template 5
+ */
+
+.template5{
+    padding: 10% 20%;
+    font-family: 'Dorsa', sans-serif;
+
+    .bloc {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    blockquote{
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+        font-size: 130px;
+        text-align: center;
+    }
+
+    cite{
+        display: inline-block;
+        width: 100%;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        text-align: right;
+        font-size: 70px;
+    }
+}
+
+/*
+ * Template 6
  */
 
 .template5{
