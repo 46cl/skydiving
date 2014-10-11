@@ -9,6 +9,9 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer
 import fhacktory.api.Api
 import fhacktory.api.CorsFilter
 import fhacktory.crawling.Crawler
+import fhacktory.crawling.PostsFetcher
+import fhacktory.flickr.FlickrClient
+import fhacktory.nlp.NounsExtractor
 import groovy.transform.CompileStatic
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -38,7 +41,11 @@ class Fhacktory
     def run()
     {
         Database database = new Database();
-        Stream stream = new Stream(eventBus)
+        FlickrClient flickrClient = new FlickrClient()
+        flickrClient.init()
+        NounsExtractor nounsExtractor = new NounsExtractor()
+        nounsExtractor.init()
+        Stream stream = new Stream(eventBus, flickrClient, nounsExtractor)
         Api api = new Api()
         PostsFetcher postsFetcher = new PostsFetcher(eventBus, database)
 

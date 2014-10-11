@@ -1,6 +1,7 @@
-package fhacktory
+package fhacktory.crawling
 
 import com.google.common.eventbus.EventBus
+import fhacktory.Database
 import fhacktory.data.Quote
 import fhacktory.event.NewQuoteEvent
 import groovyx.net.http.ContentType
@@ -41,7 +42,7 @@ class PostsFetcher implements Runnable
                     if (host) {
                         logger.info("http://" + host + "/rss.xml")
                         def http = new HTTPBuilder("http://" + host)
-                        http.get(path: '/rss.xml', query: [mode: 'xml'], contentType: ContentType.XML) { resp, xml ->
+                        http.get(path: '/rss.xml', contentType: ContentType.XML) { resp, xml ->
                             def author = xml.channel.link.text().substring(7)
                             author = author.substring(0, author.size() - 13)
                             xml.item.each {

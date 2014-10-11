@@ -8,4 +8,6 @@ class Quote
     String content
 
     String author
+
+    String picture
 }

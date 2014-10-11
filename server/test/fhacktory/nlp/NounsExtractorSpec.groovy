@@ -1,7 +1,5 @@
 package fhacktory.nlp
 
-import groovyx.net.http.RESTClient
-import org.junit.Test
 import spock.lang.Specification
 
 /**

@@ -39,19 +39,13 @@ class NounsExtractor
         String[] tokens = tokenizer.tokenize(sentence);
         String[] tags = tagger.tag(tokens);
 
-        println(tokens.join(", "))
-        println(tags.join(", "))
+        //String[] chunks = chunker.chunk(tokens, tags);
+        //println(chunks.join(","))
 
-        String[] chunks = chunker.chunk(tokens, tags);
-        println(chunks.join(","))
-
+        // Find common nouns and proper nouns
         def indexes = tags.findIndexValues({ String tag -> ["NC", "NPP"].contains(tag) });
-
-        println("Indexes : " + indexes.join(" / "))
-
         def result = indexes.collect({ Long index -> tokens[index] }).unique(false)
 
-        println("RESULT:")
         println(result.join(", "))
 
         result
