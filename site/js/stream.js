@@ -16,7 +16,7 @@ $(function() {
 
       $("cite").text(data.author);
 
-      for (var i=1; i<6; i++) {
+      for (var i=1; i<=6; i++) {
         $(".content").removeClass("template" + i);
       }
       templateNb = Math.ceil(Math.random()*5);
