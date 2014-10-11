@@ -4,7 +4,7 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
-    templateNb = 6;
+    templateNb = 5;
     $(".content").addClass("template"+templateNb);
 
     image.onload = function() {
@@ -53,29 +53,63 @@ $(function() {
             $("img").css("filter","gray");  
             $("img").css("-webkit-filter", "grayscale(100%)");
         } else if (templateNb == 2 ){
-            $(".controls").css("background-color", colorDef)
-            $("blockquote p").css("background-color", colorDef)
-            $("cite").css("color", colorDef)
+            $(".controls").css("background-color", colorDef);
+            $("blockquote p").css("background-color", colorDef);
+            $("cite").css("color", colorDef);
         } else if (templateNb == 3 ){
-            $(".controls").css("background-color", colorDefComp)
-            $(".content").css("color", colorDefComp)
+            $(".controls").css("background-color", colorDefComp);
+            $(".content").css("color", colorDefComp);
+        } else if (templateNb == 4 ){
+            $(".controls").css("background-color", colorDef);
+            $(".content").css("color", colorDef);
+        }else if (templateNb == 5 ){
+            $(".controls").css("background-color", colorDefComp);
+            $(".bloc1").css("background-color", colorDefComp);
+        }
+        else if (templateNb == 6 ){
+            $(".controls").css("background-color", colorDefComp);
+            $(".bloc1").css("background-color", colorDefComp);
         }
 
 
         /*Animation du font*/
         $(".content").fadeOut();
-        $(".content").css("background-image", "url("+image.src+")")
+        $(".content").css("background-image", "url("+image.src+")");
         $(".content").fadeIn();
     }
 
-    image.src = "fond3.jpg";
+    image.src = "fond6.jpg";
     
+    /*Placement du bloc*/
     function onresize() {
         var marginTop = ($(".content").outerHeight() -  $(".bloc1").outerHeight())/2;
         $(".content").css("padding-top", marginTop);
     }
-
     $( window ).resize(onresize);
     onresize();
     
+    /*Logs*/
+    var controlsOpen = false;
+    $( ".showlist" ).click(function() {
+      if(controlsOpen){
+        $( ".controls" ).animate({
+            top: "100%",
+            marginTop:"-26px",
+            height: "26px"
+          }, 400, function() {
+            controlsOpen = false;
+          });
+      }else{
+          $( ".controls" ).animate({
+            top: 0,
+            marginTop:0,
+            height: "100%"
+          }, 400, function() {
+            controlsOpen = true;
+          });
+      }
+    });
+    
+
+
 });
