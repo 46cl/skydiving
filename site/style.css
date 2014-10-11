@@ -106,6 +106,14 @@ body {
   filter: alpha(opacity=60);
   background-color: inherit;
 }
+.controls .about {
+  opacity: 0.6;
+  margin-left: 282px;
+  width: 300px;
+}
+.controls .about a {
+  color: white;
+}
 .controls .background {
   position: absolute;
   top: 0;
