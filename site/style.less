@@ -1,12 +1,63 @@
 @defaultFontSize: 14px;
 @controlsHeight: 26px;
+@defaultColor: #e64b3f;
 
-@import url(http://fonts.googleapis.com/css?family=Arvo:700);
-@import url(http://fonts.googleapis.com/css?family=Dorsa);
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-@import url(http://fonts.googleapis.com/css?family=Great+Vibes);
-@import url(http://fonts.googleapis.com/css?family=Vidaloka);
-@import url(http://fonts.googleapis.com/css?family=Gilda+Display);
+@font-face {
+    font-family: 'montserratregular';
+    src: url('font/montserrat-regular-webfont.eot');
+    src: url('font/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/montserrat-regular-webfont.woff2') format('woff2'),
+         url('font/montserrat-regular-webfont.woff') format('woff'),
+         url('font/montserrat-regular-webfont.ttf') format('truetype'),
+         url('font/montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'dorsaregular';
+    src: url('font/dorsa-regular-webfont.eot');
+    src: url('font/dorsa-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/dorsa-regular-webfont.woff2') format('woff2'),
+         url('font/dorsa-regular-webfont.woff') format('woff'),
+         url('font/dorsa-regular-webfont.ttf') format('truetype'),
+         url('font/dorsa-regular-webfont.svg#dorsaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gilda_displayregular';
+    src: url('font/gildadisplay-regular-webfont.eot');
+    src: url('font/gildadisplay-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/gildadisplay-regular-webfont.woff2') format('woff2'),
+         url('font/gildadisplay-regular-webfont.woff') format('woff'),
+         url('font/gildadisplay-regular-webfont.ttf') format('truetype'),
+         url('font/gildadisplay-regular-webfont.svg#gilda_displayregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'arvobold';
+    src: url('font/arvo-bold-webfont.eot');
+    src: url('font/arvo-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/arvo-bold-webfont.woff2') format('woff2'),
+         url('font/arvo-bold-webfont.woff') format('woff'),
+         url('font/arvo-bold-webfont.ttf') format('truetype'),
+         url('font/arvo-bold-webfont.svg#arvobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'great_vibesregular';
+    src: url('font/greatvibes-regular-webfont.eot');
+    src: url('font/greatvibes-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/greatvibes-regular-webfont.woff2') format('woff2'),
+         url('font/greatvibes-regular-webfont.woff') format('woff'),
+         url('font/greatvibes-regular-webfont.ttf') format('truetype'),
+         url('font/greatvibes-regular-webfont.svg#great_vibesregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 p, blockquote, cite{
     margin: 0;
@@ -19,6 +70,8 @@ p, blockquote, cite{
 body{
     position: relative;
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Helvetica, Arial, Sans-Serif;
     font-size: @defaultFontSize;
 }
@@ -76,6 +129,16 @@ body{
         filter: alpha(opacity=60);
         background-color: inherit;
     }
+
+    .about {
+        opacity: 0.6;
+        margin-left: 282px;
+        width: 300px;
+        a {
+            color: white;
+        }
+    }
+
     .background{
         position: absolute;
         top:0;
@@ -83,6 +146,7 @@ body{
         width: 100%;
         height: @controlsHeight;
         z-index: -1;
+        background-color:@defaultColor;
     }
     .background2{
         background-color: #000;
@@ -94,6 +158,7 @@ body{
         z-index: -1;
         opacity: 0.6;
         filter: alpha(opacity=60);
+        background-color:@defaultColor;
     }
 }
 
@@ -102,7 +167,7 @@ body{
  * Template 1
  */
 .template1{
-    font-family: 'Great Vibes', cursive;
+    font-family: 'great_vibesregular', cursive;
     &.backgroundImage{
         -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
         -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
@@ -170,7 +235,7 @@ body{
  */
 
 .template3{
-    font-family: 'Arvo', serif;
+    font-family: 'arvobold', serif;
 
     blockquote{
         font-size: 64px;
@@ -193,7 +258,7 @@ body{
  */
 
 .template4{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'montserratregular', sans-serif;
     
     .bloc1 {
         background: url(img/motif.png);
@@ -227,7 +292,7 @@ body{
  */
 
 .template5{
-    font-family: 'Dorsa', sans-serif;
+    font-family: 'dorsaregular', sans-serif;
     color: #fff;
 
     .bloc1 {
@@ -259,7 +324,7 @@ body{
 
 .template6{
     text-transform: uppercase;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'gilda_displayregular', cursive;
     &.backgroundImage{
         -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
         -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
@@ -283,4 +348,37 @@ body{
         text-transform: uppercase;
     }
     
+}
+/*Loader*/
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -70px 0 0 -70px;
+    width: 140px;
+    height: 140px;
+    background-color:@defaultColor;
+
+    border-radius: 100%;  
+    -webkit-animation: scaleout 1.0s infinite ease-in-out;
+    animation: scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes scaleout {
+  0% { -webkit-transform: scale(0.0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleout {
+  0% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
 }
