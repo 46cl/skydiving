@@ -2,6 +2,10 @@ $(function() {
     var colorThief = new ColorThief();
     var image = new Image();
 
+    /*Choix du template
+    templateNb = Math.round(Math.ceil()*5);
+    $(".content").addClass("template"+templateNb);*/
+
     image.onload = function() {
         var palette = colorThief.getPalette(image, 9);
         var highS = 0;
@@ -25,7 +29,6 @@ $(function() {
             var dominentColor = colorThief.getColor(image);        
             dominentColor = $c.rgb2hex(dominentColor[0], dominentColor[1], dominentColor[2]);
             var complementaryColor= $c.complement(dominentColor);
-            /*var dominentColorHSV = $c.hex2hsv(dominentColor).a;*/
 
             if(dominentColorHSV[1]>50){
                 colorDef = dominentColor
@@ -39,13 +42,22 @@ $(function() {
             colorDef = highSColorHex;
         }
 
+        colorDefComp = $c.complement(colorDef);
+
+        /*Application du template*/
+
+
         $(".controls").css("background-color", colorDef)
         $(".content").css("color", colorDef)
 
+        /*Animation du font*/
+        $(".content").fadeOut();
+        $(".content").css("background-image", "url("+image.src+")")
+        $(".content").fadeIn();
     }
 
     image.src = "fond2.jpg";
-    $(".content").css("background-image", "url("+image.src+")")
+    
 
     
 });
