@@ -1,0 +1,65 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    // Groovy
+    compile 'org.codehaus.groovy:groovy:2.2.2'
+    compile 'org.codehaus.groovy:groovy-xml:2.2.2'
+
+    // Loggin'
+    compile 'org.slf4j:slf4j-api:1.7.6'
+    compile 'ch.qos.logback:logback-classic:1.1.1'
+
+    // Jackson
+    compile 'com.fasterxml.jackson.core:jackson-core:2.3.2'
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.3.2'
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.3.2'
+
+    // crawler4j
+    compile 'edu.uci.ics:crawler4j:3.5'
+
+    // Jsoup
+    compile 'org.jsoup:jsoup:1.8.1'
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src/']
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+
+    test {
+        groovy {
+            srcDirs = ['test/']
+        }
+    }
+}
+
+
+jar {
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    manifest { attributes 'Main-Class': 'fhacktory.Fhacktory' }
+}
+
+mainClassName = "fhacktory.Fhacktory"
+
+task(debug, dependsOn: 'classes', type: JavaExec) {
+    main = mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = ["-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8001"]
+}
+
