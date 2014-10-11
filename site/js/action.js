@@ -4,7 +4,11 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
+<<<<<<< HEAD
     templateNb = 1;
+=======
+    templateNb = 5;
+>>>>>>> FETCH_HEAD
     $(".content").addClass("template"+templateNb);
 
     var text = $("blockquote").html();
