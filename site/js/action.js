@@ -6,6 +6,7 @@ $(function() {
     //templateNb = Math.ceil(Math.random()*5);
     templateNb = 6;
     $(".content").addClass("template"+templateNb);
+    $(".backgroundImage").addClass("template"+templateNb);
 
     image.onload = function() {
         var palette = colorThief.getPalette(image, 9);
@@ -47,29 +48,32 @@ $(function() {
 
         /*Application du template*/
         if (templateNb == 1 ){
-            $(".controls").css("background-color", "#000")
+            $(".controls .background").css("background-color", "#000")
+            $(".controls .background2").css("background-color", "#000")
             $(".content").css("color", "#FFF")
-            $("img").css("filter","url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale')");
-            $("img").css("filter","gray");  
-            $("img").css("-webkit-filter", "grayscale(100%)");
         } else if (templateNb == 2 ){
-            $(".controls").css("background-color", colorDef);
+            $(".controls .background").css("background-color", colorDef);
+            $(".controls .background2").css("background-color", colorDef);
             $("blockquote p").css("background-color", colorDef);
             $("cite").css("color", colorDef);
         } else if (templateNb == 3 ){
-            $(".controls").css("background-color", colorDefComp);
+            $(".controls .background").css("background-color", colorDefComp);
+            $(".controls .background2").css("background-color", colorDefComp);
             $(".content").css("color", colorDefComp);
         } else if (templateNb == 4 ){
-            $(".controls").css("background-color", colorDef);
+            $(".controls .background").css("background-color", colorDef);
+            $(".controls .background2").css("background-color", colorDef);
             $(".content").css("color", colorDef);
         }else if (templateNb == 5 ){
-            $(".controls").css("background-color", colorDefComp);
+            $(".controls .background").css("background-color", colorDefComp);
+            $(".controls .background2").css("background-color", colorDefComp);
             $(".bloc1").css("background-color", colorDefComp);
         }
         else if (templateNb == 6 ){
-            var colors = new Array("#123456","#456677","#764768","#646876","#646772");
-            colorRand = Math.ceil(Math.random()*5);
-            $(".controls").css("background-color", colors[colorRand]);
+            var colors = new Array("#FFE504","#FF8200","#F70073","#4AFF7E");
+            colorRand = Math.ceil(Math.random()*4);
+            $(".controls .background").css("background-color", colors[colorRand]);
+            $(".controls .background2").css("background-color", colors[colorRand]);
             $(".content").css("color", colors[colorRand]);
         }
 
@@ -77,7 +81,7 @@ $(function() {
         /*Animation du font*/
 
 //        $(".content").fadeOut();
-        $(".content").css("background-image", "url("+image.src+")")
+        $(".backgroundImage").css("background-image", "url("+image.src+")")
 //        $(".content").fadeIn();
 
     }
