@@ -8,7 +8,7 @@
 
 @import url(http://fonts.googleapis.com/css?family=Vidaloka);
 
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display);
+@import url(http://fonts.googleapis.com/css?family=Gilda+Display);
 p,
 blockquote,
 cite {
@@ -27,9 +27,9 @@ body {
 .content {
   width: 100%;
   height: 100%;
-  padding: 0 20%;
   background-size: cover;
   background-position: center center;
+  z-index: 1;
 }
 .controls {
   width: 100%;
@@ -39,6 +39,7 @@ body {
   padding: 0 10px;
   overflow: hidden;
   margin-top: -26px;
+  z-index: 10;
   transition: opacity 0.3s ease-in-out;
   -moz-transition: opacity 0.3s ease-in-out;
   -webkit-transition: opacity 0.3s ease-in-out;
@@ -112,11 +113,11 @@ body {
   display: inline;
   color: #fff;
 }
-.template2 p {
+.template2 > p {
   width: 100%;
   position: relative;
 }
-.template2 p cite {
+.template2 > p cite {
   display: inline-block;
   position: absolute;
   font-size: 40px;
@@ -176,28 +177,39 @@ body {
  */
 .template5 {
   font-family: 'Dorsa', sans-serif;
+  color: #fff;
 }
 .template5 .bloc1 {
   background-color: rgba(255, 255, 255, 0.5);
 }
 .template5 blockquote {
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-left: 20px;
-  font-size: 130px;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-left: 40px;
+  font-size: 100px;
   text-align: center;
 }
 .template5 cite {
   display: inline-block;
   width: 100%;
-  padding-right: 20px;
-  padding-bottom: 10px;
+  padding-right: 40px;
+  padding-bottom: 30px;
   text-align: right;
-  font-size: 70px;
+  font-size: 60px;
 }
 /*
  * Template 6
  */
+.template6 {
+  text-transform: uppercase;
+  font-family: 'Gilda Display', serif;
+  font-weight: 400;
+}
+.template6 p,
+.template6 blockquote,
+.template6 cite {
+  font-style: italic;
+}
 .template6 blockquote {
   padding-top: 20px;
   padding-right: 20px;
@@ -206,15 +218,11 @@ body {
   text-align: left;
 }
 .template6 cite {
-  font-family: 'Playfair Display', serif;
   display: inline-block;
   width: 100%;
   padding-right: 20px;
   padding-bottom: 10px;
-  text-align: right;
-  font-size: 70px;
+  text-align: left;
+  font-size: 40px;
   text-transform: uppercase;
-}
-.template6 cite::before {
-  content: "-—";
 }
