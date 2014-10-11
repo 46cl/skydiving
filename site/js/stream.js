@@ -16,6 +16,9 @@ $(function() {
 
       $("cite").text(data.author);
 
+      for (var i=0; i<5; i++) {
+        $(".content").removeClass("template" + i);
+      }
       templateNb = Math.ceil(Math.random()*5);
       $(".content").addClass("template"+templateNb).show();
     }
