@@ -83,9 +83,9 @@ body {
   font-size: 78px;
 }
 .template2 blockquote p {
-  background-color: #fff;
+  background-color: #4e0707;
   display: inline;
-  color: #4e0707;
+  color: #fff;
 }
 .template2 > p {
   width: 100%;
@@ -95,8 +95,8 @@ body {
   display: inline-block;
   position: absolute;
   font-size: 40px;
-  background-color: #4e0707;
-  color: #fff;
+  background-color: #fff;
+  color: #4e0707;
   right: 0;
 }
 /*
@@ -109,6 +109,7 @@ body {
 .template3 blockquote {
   font-size: 78px;
   border-top: 10px solid;
+  line-height: 80px;
 }
 .template3 cite {
   display: inline-block;
@@ -119,26 +120,32 @@ body {
 }
 /*
  * Template 4 - integrer du js pour alterner la couleur de la blockquote (http://codepen.io/FWeinb/pen/djuIx) 
+
+
+.template4{
+    padding: 10% 20%;
+    font-family: 'comic sans ms' ;
+
+    blockquote{
+        font-size: 78px;
+
+        &:nth-letter(even){
+          color:red;
+        }
+
+        &:nth-letter(odd){
+            color:blue;
+        }
+    }
+
+    cite{
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        font-size: 40px;
+    }
+}
  */
-.template4 {
-  padding: 10% 20%;
-  font-family: 'comic sans ms';
-}
-.template4 blockquote {
-  font-size: 78px;
-}
-.template4 blockquote:nth-letter(even) {
-  color: red;
-}
-.template4 blockquote:nth-letter(odd) {
-  color: blue;
-}
-.template4 cite {
-  display: inline-block;
-  width: 100%;
-  text-align: right;
-  font-size: 40px;
-}
 /*
  * Template 5
  */
