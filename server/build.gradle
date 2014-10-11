@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
 
-    // Grizzly
+    // Grizzly + Jersey
     compile 'org.glassfish.grizzly:grizzly-http-server:2.3.11'
     compile 'org.glassfish.jersey:project:2.7'
     compile 'org.glassfish.jersey.media:jersey-media-sse:2.7'
@@ -48,8 +48,14 @@ dependencies {
     // Guava (event bus)
     compile 'com.google.guava:guava:18.0'
 
-    // Grizzly + Jersey
+    // Open NLP
+    compile 'org.apache.opennlp:opennlp-tools:1.5.3'
+
+    // Testing
+    //testCompile group: 'junit', name: 'junit', version: '4.+'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
+
 
 sourceSets {
     main {

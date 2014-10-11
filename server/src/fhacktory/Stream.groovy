@@ -61,7 +61,7 @@ class Stream implements Runnable
         }
 
         // Filter out bait
-        for (String clickBait in ["clic", "clique", "découvrez", "tweet"]) {
+        for (String clickBait in ["clic", "clique", "découvrez", "tweet", "inscrit", "kiffe"]) {
             if (quote.content.toLowerCase().indexOf(clickBait) >= 0) {
                 return
             }

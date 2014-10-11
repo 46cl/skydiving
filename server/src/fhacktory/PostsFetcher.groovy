@@ -40,10 +40,10 @@ class PostsFetcher implements Runnable
 
                     if (host) {
                         logger.info("http://" + host + "/rss.xml")
-
                         def http = new HTTPBuilder("http://" + host)
                         http.get(path: '/rss.xml', query: [mode: 'xml'], contentType: ContentType.XML) { resp, xml ->
-                            def author = xml.channel.title.text()
+                            def author = xml.channel.link.text().substring(7)
+                            author = author.substring(0, author.size() - 13)
                             xml.item.each {
                                 def content = Jsoup.parse(it.description.text()).text()
                                 if (author && content) {
