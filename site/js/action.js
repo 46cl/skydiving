@@ -75,9 +75,11 @@ $(function() {
 
 
         /*Animation du font*/
-        $(".content").fadeOut();
-        $(".content").css("background-image", "url("+image.src+")");
-        $(".content").fadeIn();
+
+//        $(".content").fadeOut();
+        $(".content").css("background-image", "url("+image.src+")")
+//        $(".content").fadeIn();
+
     }
 
     image.src = "fond6.jpg";

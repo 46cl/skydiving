@@ -21,7 +21,7 @@ class Stream implements Runnable
 
     NounsExtractor nounsExtractor
 
-    Queue<Quote> quotes = new LinkedList<>()
+    List<Quote> quotes = new LinkedList<>()
 
     Logger logger = LoggerFactory.getLogger(Stream.class)
 
@@ -38,7 +38,7 @@ class Stream implements Runnable
         while (true) {
             try {
                 if (!quotes.isEmpty()) {
-                    Quote quote = quotes.remove()
+                    Quote quote = quotes.remove((int) (Math.random() * quotes.size()))
                     logger.info("Posting quote {}", quote.content)
                     eventBus.post(new PublishQuoteEvent([quote: quote]))
                 }
@@ -52,45 +52,46 @@ class Stream implements Runnable
     @Subscribe
     public void onNewQuote(NewQuoteEvent event)
     {
-        //logger.debug("Adding new quote {}", event.quote.content)
-
-        // Filter quotes
-
         Quote quote = event.quote
+        if (quoteIsValid(quote)) {
 
+            // Get a picture based on nouns in que quote
+            List<String> nouns = nounsExtractor.extractNouns(quote.content)
+            if (nouns.size() == 0) {
+                return
+            }
+            def photoUrl = flickrClient.findAPhoto(nouns)
+            if (!photoUrl) {
+                return
+            }
+
+            quote.picture = photoUrl
+            quotes.add(event.quote)
+        }
+    }
+
+    def quoteIsValid(Quote quote)
+    {
         // Filter out quotes too long
         if (quote.content.endsWith("...")) {
-            return
+            return false
+        }
+
+        // ...and quotes too short
+        if (quote.size() < 10) {
+            return false
         }
 
         // Filter out quotes with links
         if (quote.content.indexOf("http") >= 0) {
-            return
+            return false
         }
 
         // Filter out bait
-        for (String clickBait in ["clic", "clique", "découvrez", "tweet", "inscrit", "kiffe"]) {
+        for (String clickBait in ["clic", "clique", "découvrez", "tweet", "inscrit"]) {
             if (quote.content.toLowerCase().indexOf(clickBait) >= 0) {
-                return
+                return false
             }
         }
-
-        // Get a picture based on nouns in que quote
-
-        List<String> nouns = nounsExtractor.extractNouns(quote.content)
-
-        if (nouns.size() == 0) {
-            return
-        }
-
-        def photoUrl = flickrClient.findAPhoto(nouns)
-
-        if (!photoUrl) {
-            return
-        }
-
-        quote.picture = photoUrl
-
-        quotes.add(event.quote)
     }
 }
