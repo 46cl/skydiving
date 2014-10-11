@@ -34,7 +34,7 @@ class NounsExtractor
         tagger = new POSTaggerME(posModel);
     }
 
-    def extractNouns(String sentence)
+    List<String> extractNouns(String sentence)
     {
         String[] tokens = tokenizer.tokenize(sentence);
         String[] tags = tagger.tag(tokens);

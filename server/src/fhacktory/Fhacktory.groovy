@@ -8,6 +8,7 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer
 import fhacktory.api.Api
 import fhacktory.api.CorsFilter
+import fhacktory.api.ImageProxy
 import fhacktory.crawling.Crawler
 import fhacktory.crawling.PostsFetcher
 import fhacktory.flickr.FlickrClient
@@ -54,7 +55,7 @@ class Fhacktory
         eventBus.register(api)
         eventBus.register(stream)
 
-        HttpServer server = createHttpServer(api, new SseFeature(), new CorsFilter())
+        HttpServer server = createHttpServer(api, new SseFeature(), new CorsFilter(), new ImageProxy())
 
         // Start crawler
         startCrawler(folder)

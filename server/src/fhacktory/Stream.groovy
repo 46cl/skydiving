@@ -7,12 +7,14 @@ import fhacktory.event.NewQuoteEvent
 import fhacktory.event.PublishQuoteEvent
 import fhacktory.flickr.FlickrClient
 import fhacktory.nlp.NounsExtractor
+import groovy.transform.CompileStatic
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
  * @version $Id$
  */
+@CompileStatic
 class Stream implements Runnable
 {
     EventBus eventBus
@@ -52,25 +54,30 @@ class Stream implements Runnable
     @Subscribe
     public void onNewQuote(NewQuoteEvent event)
     {
-        Quote quote = event.quote
-        if (quoteIsValid(quote)) {
+        try {
+            Quote quote = event.quote
+            if (quoteIsValid(quote)) {
 
-            // Get a picture based on nouns in que quote
-            List<String> nouns = nounsExtractor.extractNouns(quote.content)
-            if (nouns.size() == 0) {
-                return
-            }
-            def photoUrl = flickrClient.findAPhoto(nouns)
-            if (!photoUrl) {
-                return
-            }
+                // Get a picture based on nouns in que quote
+                List<String> nouns = nounsExtractor.extractNouns(quote.content)
+                if (nouns.size() == 0) {
+                    return
+                }
+                def photoUrl = flickrClient.findAPhoto(nouns)
+                if (!photoUrl) {
+                    return
+                }
 
-            quote.picture = photoUrl
-            quotes.add(event.quote)
+                //quote.picture = "http://localhost:8144/photo?url=" + URLEncoder.encode(photoUrl as String, "UTF-8")
+                quote.picture = photoUrl
+                quotes.add(event.quote)
+            }
+        } catch (Exception e) {
+            e.printStackTrace()
         }
     }
 
-    def quoteIsValid(Quote quote)
+    Boolean quoteIsValid(Quote quote)
     {
         // Filter out quotes too long
         if (quote.content.endsWith("...")) {
@@ -78,7 +85,7 @@ class Stream implements Runnable
         }
 
         // ...and quotes too short
-        if (quote.size() < 10) {
+        if (quote.content.size() < 10) {
             return false
         }
 
@@ -93,5 +100,7 @@ class Stream implements Runnable
                 return false
             }
         }
+
+        return true
     }
 }
