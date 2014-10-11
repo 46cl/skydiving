@@ -2,6 +2,7 @@
 @controlsHeight: 26px;
 
 @import url(http://fonts.googleapis.com/css?family=Arvo:700);
+@import url(http://fonts.googleapis.com/css?family=Dorsa);
 
 p, blockquote, cite{
     margin: 0;
@@ -113,7 +114,7 @@ body{
 }
 
 /*
- * Template 3
+ * Template 3 - background b&w
  */
 
 .template3{
@@ -133,3 +134,54 @@ body{
     }
 }
 
+/*
+ * Template 4 - integrer du js pour alterner la couleur de la blockquote (http://codepen.io/FWeinb/pen/djuIx) 
+ */
+
+.template4{
+    padding: 10% 20%;
+    font-family: 'comic sans ms' ;
+
+    blockquote{
+        font-size: 78px;
+
+        &:nth-letter(even){
+          color:red;
+        }
+
+        &:nth-letter(odd){
+            color:blue;
+        }
+    }
+
+    cite{
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        font-size: 40px;
+    }
+}
+
+/*
+ * Template 5
+ */
+
+.template5{
+    padding: 10% 20%;
+    font-family: 'Dorsa', sans-serif;
+
+    blockquote{
+        font-size: 150px;
+        background: rgba(255, 255, 255, 0.5);
+        text-align: center;
+    }
+
+    cite{
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.5);
+        width: 100%;
+        padding-right: 10px;
+        text-align: right;
+        font-size: 70px;
+    }
+}
