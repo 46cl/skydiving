@@ -20,7 +20,7 @@ class Database
     @Subscribe
     void recordSkyblog(SkyblogFound e)
     {
-        logger.info("Recording skyblog {}", e.host)
+        //logger.info("Recording skyblog {}", e.host)
         sql.withTransaction({
             def rows = sql.rows("select * from skyblogs where host = ?", [e.host])
             if (rows.isEmpty()) {
