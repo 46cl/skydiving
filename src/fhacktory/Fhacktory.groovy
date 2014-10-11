@@ -1,5 +1,6 @@
 package fhacktory
 
+import com.google.common.eventbus.EventBus
 import edu.uci.ics.crawler4j.crawler.CrawlConfig
 import edu.uci.ics.crawler4j.crawler.CrawlController
 import edu.uci.ics.crawler4j.fetcher.PageFetcher
@@ -9,10 +10,17 @@ import groovy.transform.CompileStatic
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+import java.util.concurrent.Executors
+
 @CompileStatic
 class Fhacktory
 {
     def static final Logger logger = LoggerFactory.getLogger(Fhacktory.class)
+
+    // Yeah, I know, right
+    static EventBus eventBus = new EventBus()
+
+    private Database database = new Database();
 
     public static void main(String[] args)
     {
@@ -22,6 +30,8 @@ class Fhacktory
 
     def run()
     {
+        eventBus.register(database)
+
         logger.info("""\n\n\tFhacktory app started\n""")
 
         String crawlStorageFolder = "/home/jerome/crawler"
@@ -32,21 +42,18 @@ class Fhacktory
         config.setUserAgentString(
                 "Mozilla/5.0 (X11 Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36")
         config.setPolitenessDelay(500)
-        //config.setMaxDepthOfCrawling(-1)
         config.setResumableCrawling(true)
+        config.setFollowRedirects(true)
 
-        /*
-         * Instantiate the controller for this crawl.
-         */
         PageFetcher pageFetcher = new PageFetcher(config)
-        RobotstxtConfig robotstxtConfig = new RobotstxtConfig()
-        RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher)
+        RobotstxtConfig robotsTxtConfig = new RobotstxtConfig()
+        RobotstxtServer robotsTxtServer = new RobotstxtServer(robotsTxtConfig, pageFetcher)
 
-        CrawlController controller = new CrawlController(config, pageFetcher, robotstxtServer)
+        CrawlController controller = new CrawlController(config, pageFetcher, robotsTxtServer)
         controller.addSeed("http://fr.skyrock.com/blog/top.php")
-        //controller.addSeed("http://tumblr.com/tagged/quote")
-        //controller.addSeed("http://www.tumblr.com/tagged/random")
-        controller.start(fhacktory.Crawler.class, numberOfCrawlers)
+        controller.startNonBlocking(fhacktory.Crawler.class, numberOfCrawlers)
+
+        Executors.newSingleThreadExecutor().submit(new PostsFetcher(database));
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run()

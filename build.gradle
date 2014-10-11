@@ -13,8 +13,12 @@ repositories {
 
 dependencies {
     // Groovy
-    compile 'org.codehaus.groovy:groovy:2.2.2'
-    compile 'org.codehaus.groovy:groovy-xml:2.2.2'
+    compile 'org.codehaus.groovy:groovy:2.3.7'
+    compile 'org.codehaus.groovy:groovy-xml:2.3.7'
+    compile 'org.codehaus.groovy:groovy-sql:2.3.7'
+
+    // HTTP builder
+    compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
 
     // Loggin'
     compile 'org.slf4j:slf4j-api:1.7.6'
@@ -30,6 +34,13 @@ dependencies {
 
     // Jsoup
     compile 'org.jsoup:jsoup:1.8.1'
+
+    // PG
+    compile 'org.postgresql:postgresql:9.3-1102-jdbc41'
+
+    // Guava (event bus)
+    compile 'com.google.guava:guava:18.0'
+
 }
 
 sourceSets {
