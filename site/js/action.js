@@ -4,11 +4,7 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
-<<<<<<< HEAD
     templateNb = 4;
-=======
-    templateNb = 1;
->>>>>>> 9594c89dbdba99cb6f1b5ce39bacf308e75835f1
     $(".content").addClass("template"+templateNb);
 
     image.onload = function() {
