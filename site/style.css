@@ -80,7 +80,7 @@ body {
   font-weight: 700;
 }
 .template2 blockquote {
-  font-size: 78px;
+  font-size: 72px;
 }
 .template2 blockquote p {
   display: inline;
@@ -94,7 +94,7 @@ body {
   display: inline-block;
   position: absolute;
   font-size: 40px;
-  color: #4e0707;
+  background-color: #fff;
   right: 0;
 }
 /*
@@ -105,8 +105,9 @@ body {
   font-family: 'Arvo', serif;
 }
 .template3 blockquote {
-  font-size: 78px;
+  font-size: 64px;
   border-top: 10px solid;
+  padding-top: 20px;
   line-height: 80px;
 }
 .template3 cite {
@@ -115,6 +116,7 @@ body {
   text-align: right;
   font-size: 40px;
   border-bottom: 10px solid;
+  padding-bottom: 20px;
 }
 /*
  * Template 4 - integrer du js pour alterner la couleur de la blockquote (http://codepen.io/FWeinb/pen/djuIx) 
@@ -151,16 +153,21 @@ body {
   padding: 10% 20%;
   font-family: 'Dorsa', sans-serif;
 }
+.template5 .bloc {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 .template5 blockquote {
-  font-size: 150px;
-  background: rgba(255, 255, 255, 0.5);
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 130px;
   text-align: center;
 }
 .template5 cite {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.5);
   width: 100%;
-  padding-right: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
   text-align: right;
   font-size: 70px;
 }
