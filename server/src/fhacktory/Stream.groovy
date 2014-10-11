@@ -5,6 +5,8 @@ import com.google.common.eventbus.Subscribe
 import fhacktory.data.Quote
 import fhacktory.event.NewQuoteEvent
 import fhacktory.event.PublishQuoteEvent
+import fhacktory.flickr.FlickrClient
+import fhacktory.nlp.NounsExtractor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -15,13 +17,19 @@ class Stream implements Runnable
 {
     EventBus eventBus
 
+    FlickrClient flickrClient
+
+    NounsExtractor nounsExtractor
+
     Queue<Quote> quotes = new LinkedList<>()
 
     Logger logger = LoggerFactory.getLogger(Stream.class)
 
-    Stream(EventBus eventBus)
+    Stream(EventBus eventBus, FlickrClient flickrClient, NounsExtractor nounsExtractor)
     {
         this.eventBus = eventBus
+        this.flickrClient = flickrClient
+        this.nounsExtractor = nounsExtractor
     }
 
     @Override
@@ -37,7 +45,7 @@ class Stream implements Runnable
             } catch (Exception e) {
                 e.printStackTrace()
             }
-            Thread.sleep(1000)
+            Thread.sleep(5000)
         }
     }
 
@@ -66,6 +74,22 @@ class Stream implements Runnable
                 return
             }
         }
+
+        // Get a picture based on nouns in que quote
+
+        List<String> nouns = nounsExtractor.extractNouns(quote.content)
+
+        if (nouns.size() == 0) {
+            return
+        }
+
+        def photoUrl = flickrClient.findAPhoto(nouns)
+
+        if (!photoUrl) {
+            return
+        }
+
+        quote.picture = photoUrl
 
         quotes.add(event.quote)
     }
