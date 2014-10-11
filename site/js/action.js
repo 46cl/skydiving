@@ -31,14 +31,8 @@ $(function() {
             var dominentColor = colorThief.getColor(image);        
             dominentColor = $c.rgb2hex(dominentColor[0], dominentColor[1], dominentColor[2]);
             var complementaryColor= $c.complement(dominentColor);
-
-            if(dominentColorHSV[1]>50){
-                colorDef = dominentColor
-                //alert("dominent");
-            }else{
-                colorDef = complementaryColor
-                //alert("complementary");
-            }
+            colorDef = complementaryColor
+   
         }else{
             colorDef = highSColorHex;
         }
