@@ -12,6 +12,10 @@ source.onmessage = function(e){
      $("blockquote p").text(data.content);
 
      $("cite").text(data.author);
+
+      templateNb = Math.ceil(Math.random()*5);
+      $(".content").addClass("template"+templateNb);
+
   };
   image.src = data.picture;
 
