@@ -34,11 +34,12 @@ class Fhacktory
 
     public static void main(String[] args)
     {
+        String folder = args.length > 0 ? args[0] : "/home/jerome/crawler"
         def app = new Fhacktory()
-        app.run()
+        app.run(folder)
     }
 
-    def run()
+    def run(String folder)
     {
         Database database = new Database();
         FlickrClient flickrClient = new FlickrClient()
@@ -56,7 +57,7 @@ class Fhacktory
         HttpServer server = createHttpServer(api, new SseFeature(), new CorsFilter())
 
         // Start crawler
-        startCrawler()
+        startCrawler(folder)
 
         // Start post fetcher
         Executors.newSingleThreadExecutor().submit(postsFetcher);
@@ -81,9 +82,9 @@ class Fhacktory
         }
     }
 
-    void startCrawler()
+    void startCrawler(String folder)
     {
-        String crawlStorageFolder = "/home/jerome/crawler"
+        String crawlStorageFolder = folder
         int numberOfCrawlers = 7
 
         CrawlConfig config = new CrawlConfig()

@@ -63,9 +63,9 @@ $(function() {
 
 
         /*Animation du font*/
-        $(".content").fadeOut();
+//        $(".content").fadeOut();
         $(".content").css("background-image", "url("+image.src+")")
-        $(".content").fadeIn();
+//        $(".content").fadeIn();
     }
 
     image.src = "fond3.jpg";
