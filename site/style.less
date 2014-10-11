@@ -6,7 +6,7 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
 @import url(http://fonts.googleapis.com/css?family=Vidaloka);
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display);
+@import url(http://fonts.googleapis.com/css?family=Gilda+Display);
 
 p, blockquote, cite{
     margin: 0;
@@ -27,6 +27,7 @@ body{
     padding: 0 20%;
     background-size: cover;
     background-position: center center;
+    z-index: 1;
 }
 .controls{
     position: absolute;
@@ -128,7 +129,7 @@ body{
         } 
     }
 
-    p {
+    &>p {
         width: 100%;
         position: relative;
         
@@ -205,26 +206,28 @@ body{
 
 .template5{
     font-family: 'Dorsa', sans-serif;
+    color: #fff;
 
     .bloc1 {
         background-color: rgba(255, 255, 255, 0.5);
+
     }
 
     blockquote{
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
-        font-size: 130px;
+        padding-top: 40px;
+        padding-right: 40px;
+        padding-left: 40px;
+        font-size: 100px;
         text-align: center;
     }
 
     cite{
         display: inline-block;
         width: 100%;
-        padding-right: 20px;
-        padding-bottom: 10px;
+        padding-right: 40px;
+        padding-bottom: 30px;
         text-align: right;
-        font-size: 70px;
+        font-size: 60px;
     }
 }
 
@@ -233,28 +236,29 @@ body{
  */
 
 .template6{
+    text-transform: uppercase;
+    font-family: 'Gilda Display', serif;
+    font-weight: 400;
+    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(100%);
+    filter: gray;
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    
+    p, blockquote, cite {
+        font-style: italic;
+    }
 
     blockquote{
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
         font-size: 70px;
         text-align: left;
     }
 
     cite{
-        font-family: 'Playfair Display', serif;
         display: inline-block;
-        width: 100%;
-        padding-right: 20px;
-        padding-bottom: 10px;
-        text-align: right;
-        font-size: 70px;
+        text-align: left;
+        font-size: 30px;
         text-transform: uppercase;
-
-        &::before {
-            content: "-—";
-
-        }
     }
+    
 }

@@ -4,7 +4,7 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
-    templateNb = 5;
+    templateNb = 6;
     $(".content").addClass("template"+templateNb);
 
     image.onload = function() {
@@ -67,8 +67,10 @@ $(function() {
             $(".bloc1").css("background-color", colorDefComp);
         }
         else if (templateNb == 6 ){
-            $(".controls").css("background-color", colorDefComp);
-            $(".bloc1").css("background-color", colorDefComp);
+            var colors = new Array("#123456","#456677","#764768","#646876","#646772");
+            colorRand = Math.ceil(Math.random()*5);
+            $(".controls").css("background-color", colors[colorRand]);
+            $(".content").css("color", colors[colorRand]);
         }
 
 
