@@ -4,16 +4,8 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
-<<<<<<< HEAD
     templateNb = 1;
-=======
-    templateNb = 5;
->>>>>>> FETCH_HEAD
     $(".content").addClass("template"+templateNb);
-
-    var text = $("blockquote").html();
-    text = text.replace(/\r\n/g, '<br />').replace(/[\r\n]/g, '<br />');
-    $("blockquote").html(text);
 
     image.onload = function() {
         var palette = colorThief.getPalette(image, 9);
@@ -55,8 +47,11 @@ $(function() {
 
         /*Application du template*/
         if (templateNb == 1 ){
-            $(".controls").css("background-color", colorDef)
-            $(".content").css("color", colorDef)
+            $(".controls").css("background-color", "#000")
+            $(".content").css("color", "#FFF")
+            $("img").css("filter","url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale')");
+            $("img").css("filter","gray");  
+            $("img").css("-webkit-filter", "grayscale(100%)");
         } else if (templateNb == 2 ){
             $(".controls").css("background-color", colorDef)
             $("blockquote p").css("background-color", colorDef)
