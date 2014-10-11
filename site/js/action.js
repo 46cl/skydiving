@@ -4,8 +4,12 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
-    templateNb = 3;
+    templateNb = 1;
     $(".content").addClass("template"+templateNb);
+
+    var text = $("blockquote").html();
+    text = text.replace(/\r\n/g, '<br />').replace(/[\r\n]/g, '<br />');
+    $("blockquote").html(text);
 
     image.onload = function() {
         var palette = colorThief.getPalette(image, 9);
@@ -51,7 +55,8 @@ $(function() {
             $(".content").css("color", colorDef)
         } else if (templateNb == 2 ){
             $(".controls").css("background-color", colorDef)
-            $(".content").css("color", colorDef)
+            $("blockquote p").css("background-color", colorDef)
+            $("cite").css("color", colorDef)
         } else if (templateNb == 3 ){
             $(".controls").css("background-color", colorDefComp)
             $(".content").css("color", colorDefComp)
@@ -64,7 +69,7 @@ $(function() {
         $(".content").fadeIn();
     }
 
-    image.src = "fond3.jpg";
+    image.src = "fond2.jpg";
     
 
     

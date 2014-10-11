@@ -1,6 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Arvo:700);
 
 @import url(http://fonts.googleapis.com/css?family=Dorsa);
+
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes);
 p,
 blockquote,
 cite {
@@ -58,11 +60,13 @@ body {
  * Template 1
  */
 .template1 {
+  font-family: 'Great Vibes', cursive;
   padding: 10% 20%;
 }
 .template1 blockquote {
   font-size: 78px;
   border-top: 5px solid;
+  text-align: center;
 }
 .template1 cite {
   display: inline-block;
