@@ -1,6 +1,8 @@
 @defaultFontSize: 14px;
 @controlsHeight: 26px;
 
+@import url(http://fonts.googleapis.com/css?family=Arvo:700);
+
 p, blockquote, cite{
     margin: 0;
     padding: 0;
@@ -55,6 +57,10 @@ body{
 }
 
 /* TEMPLATES */
+/*
+ * Template 1
+ */
+
 .template1{
     padding: 10% 20%;
 
@@ -68,6 +74,62 @@ body{
         text-align: right;
         font-size: 40px;
         border-bottom: 5px solid;
+    }
+}
+
+/*
+ * Template 2
+ */
+
+.template2{
+    padding: 10% 20%;
+    font-family: helvetica, arial;
+    font-weight: 700;
+
+    blockquote{
+        font-size: 78px;
+
+        p{ 
+            background-color: #fff;
+            display: inline;
+            color: #4e0707;
+        } 
+
+    }
+
+    &>p {
+        width: 100%;
+        position: relative;
+        
+        cite{
+            display: inline-block;
+            position: absolute;
+            font-size: 40px;
+            background-color: #4e0707;
+            color: #fff;
+            right: 0;
+        }
+    }
+}
+
+/*
+ * Template 3
+ */
+
+.template3{
+    padding: 10% 20%;
+    font-family: 'Arvo', serif;
+
+    blockquote{
+        font-size: 78px;
+        border-top: 10px solid; 
+    }
+    cite{
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        font-size: 40px;
+        border-bottom: 10px solid;
     }
 }
 
