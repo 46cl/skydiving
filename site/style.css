@@ -1,6 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Arvo:700);
 
 @import url(http://fonts.googleapis.com/css?family=Dorsa);
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes);
 p,
 blockquote,
 cite {
@@ -21,6 +25,7 @@ body {
   height: 100%;
   background-size: cover;
   background-position: center center;
+  z-index: 1;
 }
 .controls {
   width: 100%;
@@ -30,6 +35,12 @@ body {
   padding: 0 10px;
   overflow: hidden;
   margin-top: -26px;
+  z-index: 10;
+  transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  opacity: 0.99;
+  filter: alpha(opacity=99);
 }
 .controls * {
   display: inline-block;
@@ -58,29 +69,41 @@ body {
  * Template 1
  */
 .template1 {
-  padding: 10% 20%;
+  font-family: 'Great Vibes', cursive;
+  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 }
-.template1 blockquote {
+.template1 .bloc1 {
+  border: 1px solid #FFF;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.template1 .bloc1 .bloc2 {
+  border: 1px solid #FFF;
+  padding: 50px;
+}
+.template1 .bloc1 .bloc2 blockquote {
   font-size: 78px;
-  border-top: 5px solid;
+  text-align: center;
 }
-.template1 cite {
+.template1 .bloc1 .bloc2 cite {
   display: inline-block;
   width: 100%;
   text-align: right;
   font-size: 40px;
-  border-bottom: 5px solid;
 }
 /*
  * Template 2
  */
 .template2 {
-  padding: 10% 20%;
   font-family: helvetica, arial;
   font-weight: 700;
 }
 .template2 blockquote {
-  font-size: 78px;
+  font-size: 72px;
 }
 .template2 blockquote p {
   display: inline;
@@ -94,19 +117,19 @@ body {
   display: inline-block;
   position: absolute;
   font-size: 40px;
-  color: #4e0707;
+  background-color: #fff;
   right: 0;
 }
 /*
  * Template 3 - background b&w
  */
 .template3 {
-  padding: 10% 20%;
   font-family: 'Arvo', serif;
 }
 .template3 blockquote {
-  font-size: 78px;
+  font-size: 64px;
   border-top: 10px solid;
+  padding-top: 20px;
   line-height: 80px;
 }
 .template3 cite {
@@ -115,52 +138,81 @@ body {
   text-align: right;
   font-size: 40px;
   border-bottom: 10px solid;
+  padding-bottom: 20px;
 }
 /*
- * Template 4 - integrer du js pour alterner la couleur de la blockquote (http://codepen.io/FWeinb/pen/djuIx) 
-
-
-.template4{
-    padding: 10% 20%;
-    font-family: 'comic sans ms' ;
-
-    blockquote{
-        font-size: 78px;
-
-        &:nth-letter(even){
-          color:red;
-        }
-
-        &:nth-letter(odd){
-            color:blue;
-        }
-    }
-
-    cite{
-        display: inline-block;
-        width: 100%;
-        text-align: right;
-        font-size: 40px;
-    }
-}
+ * Template 4
  */
+.template4 {
+  font-family: 'Montserrat', sans-serif;
+}
+.template4 .bloc1 {
+  background: url(img/motif.png);
+}
+.template4 blockquote {
+  font-size: 60px;
+  text-align: center;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.template4 blockquote p {
+  border-bottom: 3px solid;
+  display: inline;
+}
+.template4 cite {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  font-size: 40px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
 /*
  * Template 5
  */
 .template5 {
-  padding: 10% 20%;
   font-family: 'Dorsa', sans-serif;
 }
+.template5 .bloc1 {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 .template5 blockquote {
-  font-size: 150px;
-  background: rgba(255, 255, 255, 0.5);
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 130px;
   text-align: center;
 }
 .template5 cite {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.5);
   width: 100%;
-  padding-right: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  text-align: right;
+  font-size: 70px;
+}
+/*
+ * Template 6
+ */
+.template5 {
+  font-family: 'Dorsa', sans-serif;
+}
+.template5 .bloc1 {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.template5 blockquote {
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 130px;
+  text-align: center;
+}
+.template5 cite {
+  display: inline-block;
+  width: 100%;
+  padding-right: 20px;
+  padding-bottom: 10px;
   text-align: right;
   font-size: 70px;
 }
