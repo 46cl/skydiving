@@ -3,8 +3,8 @@ function randomTemplate(imageSrc, callback) {
     var colorThief = new ColorThief();
     var image = new Image();
 
-    //var templateNb = Math.ceil(Math.random() * 5);
-    templateNb = 5;
+    var templateNb = Math.ceil(Math.random() * 5);
+    //templateNb = 5;
 
     for (var i = 1; i <= 6; i++) {
         $(".content").removeClass("template" + i);
@@ -95,9 +95,15 @@ function randomTemplate(imageSrc, callback) {
 
         //REGLAGE DU TEXTE
         if($("blockquote p").text().length > 100){
-            var newSize = parseFloat($("blockquote p").css("font-size")*0.2);
-            alert(newSize);
-            $("blockquote p").css("font-size", newSize+"px");
+            var newSizeB = parseFloat($("blockquote p").css("font-size"));
+            $("blockquote p").css("font-size", (newSizeB*0.7)+"px");
+
+            var newSizeC = parseFloat($("cite").css("font-size"));
+            $("cite").css("font-size", (newSizeC*0.7)+"px");
+
+            var newSizeLH = parseFloat($("blockquote").css("line-height"));
+            $("blockquote").css("line-height", (newSizeLH*0.7)+"px");
+
         }
 
 
