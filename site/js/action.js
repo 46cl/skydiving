@@ -3,8 +3,8 @@ function randomTemplate(imageSrc) {
     var colorThief = new ColorThief();
     var image = new Image();
 
-    var templateNb = Math.ceil(Math.random() * 5);
-    //templateNb = 6;
+    //var templateNb = Math.ceil(Math.random() * 5);
+    templateNb = 5;
 
     for (var i = 1; i <= 6; i++) {
         $(".content").removeClass("template" + i);
@@ -60,6 +60,7 @@ function randomTemplate(imageSrc) {
             $(".controls .background").css("background-color", "#000")
             $(".controls .background2").css("background-color", "#000")
             $(".content").css("color", "#FFF")
+            $(".bloc1").css("background-color", "rgba(0, 0, 0, 0.5)");
         } else if (templateNb == 2) {
             $(".controls .background").css("background-color", colorDef);
             $(".controls .background2").css("background-color", colorDef);
@@ -73,10 +74,12 @@ function randomTemplate(imageSrc) {
             $(".controls .background").css("background-color", colorDef);
             $(".controls .background2").css("background-color", colorDef);
             $(".content").css("color", colorDef);
+            $(".bloc1").css("background", "url(img/motif.png)");
         } else if (templateNb == 5) {
             $(".controls .background").css("background-color", colorDefComp);
             $(".controls .background2").css("background-color", colorDefComp);
             $(".bloc1").css("background-color", colorDefComp);
+
         }
         else if (templateNb == 6) {
             var colors = new Array("#FFE504", "#FF8200", "#F70073", "#4AFF7E");
@@ -86,6 +89,15 @@ function randomTemplate(imageSrc) {
             $(".content").css("color", colors[colorRand]);
         }
 
+        //REGLAGE DU TEXTE
+        if($("blockquote p").text().length > 100){
+            var newSize = parseFloat($("blockquote p").css("font-size")*0.2);
+            alert(newSize);
+            $("blockquote p").css("font-size", newSize+"px");
+        }
+
+
+        //IMAGE
         $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
     }
 
