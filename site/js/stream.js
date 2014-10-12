@@ -12,10 +12,12 @@ $(function () {
     function processQueue() {
         if (queue.length > 0 && !isPaused) {
             var data = queue.shift();
-            randomTemplate(data.picture, function(){
-                $("blockquote p").text(data.content);
-                $("cite").text(data.author);
-            });
+            (function(data){
+                randomTemplate(data.picture, function(){
+                    $("blockquote p").text(data.content);
+                    $("cite").text(data.author);
+                });
+            })(data);
         }
     }
 
