@@ -122,7 +122,7 @@ function randomTemplate(imageSrc, callback) {
 
 $(function () {
 
-    if (window.location.pathname !== "/sse.html") {
+    if (window.location.pathname === "/template.html") {
         randomTemplate("fond6.jpg");
     }
 
