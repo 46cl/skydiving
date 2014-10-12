@@ -34,13 +34,11 @@ $(function () {
     };
 
     logs.onmessage = function(e) {
-        console.log(e);
-        var log = e.data
+        var log = e.data;
         $("#logs").prepend($("<br />"));
         $("#logs").prepend($("<span/>").text(log));
-
         if ($("#logs span").length > 200) {
-
+            $("#logs span").last().remove();
         }
     }
 
