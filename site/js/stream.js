@@ -9,18 +9,13 @@ $(function () {
         isPaused = !isPaused;
     })
 
-    $(".content").hide();
-
     function processQueue() {
         if (queue.length > 0 && !isPaused) {
             var data = queue.shift();
-
-            console.log(data.picture);
-            randomTemplate(data.picture);
-
-            $("blockquote p").text(data.content);
-
-            $("cite").text(data.author);
+            randomTemplate(data.picture, function(){
+                $("blockquote p").text(data.content);
+                $("cite").text(data.author);
+            });
         }
     }
 

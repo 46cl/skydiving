@@ -1,4 +1,4 @@
-function randomTemplate(imageSrc) {
+function randomTemplate(imageSrc, callback) {
 
     var colorThief = new ColorThief();
     var image = new Image();
@@ -8,7 +8,7 @@ function randomTemplate(imageSrc) {
 
     for (var i = 1; i <= 6; i++) {
         $(".content").removeClass("template" + i);
-        $(".backgroundImage").addClass("template" + i);
+        $(".backgroundImage").removeClass("template" + i);
     }
     templateNb = Math.ceil(Math.random() * 5);
 
@@ -16,6 +16,8 @@ function randomTemplate(imageSrc) {
     $(".backgroundImage").addClass("template" + templateNb);
 
     function imageLoaded() {
+        callback && callback.call();
+        $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
         //$(".backgroundImage").css("background-image", "url(" + image.src + ")")
 
         var palette = colorThief.getPalette(image, 9);
@@ -45,6 +47,7 @@ function randomTemplate(imageSrc) {
         colorDefComp = $c.complement(colorDef);
 
         // Reset template
+        console.log("Reset before" , templateNb);
 
         $(".controls .background").css("background-color", "transparent");
         $(".controls .background2").css("background-color", "transparent");
@@ -54,6 +57,7 @@ function randomTemplate(imageSrc) {
         $("cite").css("color", "inherit");
         $("cite").css("background-color", "transparent");
         $(".bloc1").css("background-color", "transparent");
+
 
         /*Application du template*/
         if (templateNb == 1) {
@@ -118,7 +122,9 @@ function randomTemplate(imageSrc) {
 
 $(function () {
 
-    randomTemplate("fond6.jpg");
+    if (window.location.pathname !== "/sse.html") {
+        randomTemplate("fond6.jpg");
+    }
 
     /*Placement du bloc*/
     function onresize() {
