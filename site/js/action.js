@@ -8,7 +8,7 @@ function randomTemplate(imageSrc, callback) {
         $(".backgroundImage").removeClass("template" + i);
     }
     templateNb = Math.ceil(Math.random() * 6);
-    templateNb=6;
+    templateNb=2;
 
     $(".content").addClass("template" + templateNb);
     $(".backgroundImage").addClass("template" + templateNb);
@@ -59,15 +59,20 @@ function randomTemplate(imageSrc, callback) {
 
         /*Application du template*/
         if (templateNb == 1) {
-            $(".controls .background").css("background-color", "#000")
-            $(".controls .background2").css("background-color", "#000")
-            $(".content").css("color", "#FFF")
+            $(".controls .background").css("background-color", "#000");
+            $(".controls .background2").css("background-color", "#000");
+            $(".content").css("color", "#FFF");
             $(".bloc1").css("background-color", "rgba(0, 0, 0, 0.5)");
+            var contentB = $("blockquote p").html().toLowerCase();
+            $("blockquote p").html(capitaliseFirstLetter(contentB));
+            var contentC = $("cite").html().toLowerCase();
+            $("cite").html(capitaliseFirstLetter(contentC));
         } else if (templateNb == 2) {
             $(".controls .background").css("background-color", colorDef);
             $(".controls .background2").css("background-color", colorDef);
             $("blockquote p").css("background-color", colorDef);
             $("cite").css("color", colorDef);
+            $("cite").css("background-color", "#FFF");
         } else if (templateNb == 3) {
             $(".controls .background").css("background-color", colorDefComp);
             $(".controls .background2").css("background-color", colorDefComp);
@@ -81,7 +86,7 @@ function randomTemplate(imageSrc, callback) {
             $(".controls .background").css("background-color", colorDefComp);
             $(".controls .background2").css("background-color", colorDefComp);
             $(".bloc1").css("background-color", colorDefComp);
-
+            $(".bloc1").css("color", colorDef);
         }
         else if (templateNb == 6) {
             var colors = new Array("","#FFE504", "#FF8200", "#F70073", "#4AFF7E");
@@ -97,7 +102,6 @@ function randomTemplate(imageSrc, callback) {
         }else{
             $(".bloc1").removeClass("longText");
         }
-
 
         //IMAGE
         $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
@@ -116,6 +120,11 @@ function randomTemplate(imageSrc, callback) {
         image.onload = imageLoaded;
         image.src = imageSrc;
     }
+}
+
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 $(function () {
