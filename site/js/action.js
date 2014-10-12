@@ -6,13 +6,12 @@ function onresize() {
 
 function randomTemplate(imageSrc, callback) {
 
-    console.log("random template called");
-
     var colorThief = new ColorThief();
     var image = new Image();
 
-
     function imageLoaded() {
+
+        $(".keyword").show();
 
         for (var i = 1; i <= 6; i++) {
             $(".content").removeClass("template" + i);
@@ -62,7 +61,7 @@ function randomTemplate(imageSrc, callback) {
         $(".controls .background2").css("background-color", "transparent");
         $("blockquote p").css("background-color", "transparent");
         $("blockquote").css("background-color", "transparent");
-        //$("cite").css("color", "inherit");
+        $("cite").css("color", "inherit");
         $("cite").css("background-color", "transparent");
         $(".bloc1").css("background-color", "transparent");
         $(".bloc1").css("background", "none");

@@ -10,4 +10,6 @@ class Quote
     String author
 
     String picture
+
+    List<String> keywords
 }

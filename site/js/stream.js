@@ -1,7 +1,7 @@
 $(function () {
 
-    //var source = new EventSource("http://localhost:8144/quotes")
-    var source = new EventSource("http://mayocatdev.radchaps.com/quotes"),
+    var source = new EventSource("http://localhost:8144/quotes")
+    //var source = new EventSource("http://mayocatdev.radchaps.com/quotes"),
         logs = new EventSource("http://localhost:8144/logs"),
         queue = [],
         isPaused = false;
@@ -17,6 +17,8 @@ $(function () {
                 randomTemplate(data.picture, function(){
                     $("blockquote p").text(data.content);
                     $("cite").text(data.author);
+                    console.log(data);
+                    $("#keywords").text(data.keywords.join(", "))
                 });
             })(data);
         }

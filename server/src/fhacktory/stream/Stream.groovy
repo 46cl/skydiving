@@ -47,7 +47,7 @@ class Stream implements Runnable
             } catch (Exception e) {
                 e.printStackTrace()
             }
-            Thread.sleep(5000)
+            Thread.sleep(500)
         }
     }
 
@@ -69,6 +69,7 @@ class Stream implements Runnable
                 }
 
                 //quote.picture = "http://localhost:8144/photo?url=" + URLEncoder.encode(photoUrl as String, "UTF-8")
+                quote.keywords = nouns
                 quote.picture = photoUrl
                 quotes.add(event.quote)
             }
