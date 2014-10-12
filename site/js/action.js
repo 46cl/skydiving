@@ -15,8 +15,9 @@ function randomTemplate(imageSrc, callback) {
         $(".content").removeClass("template" + i);
         $(".backgroundImage").removeClass("template" + i);
     }
-    var templateNb = Math.ceil(Math.random() * 5);
-    //templateNb = 5;
+
+    var templateNb = Math.ceil(Math.random() * 6);
+    //templateNb=6;
 
     $(".content").addClass("template" + templateNb);
     $(".backgroundImage").addClass("template" + templateNb);
@@ -56,7 +57,7 @@ function randomTemplate(imageSrc, callback) {
         colorDefComp = $c.complement(colorDef);
 
         // Reset template
-        console.log("Reset before" , templateNb);
+        console.log("Reset before", templateNb);
 
         $(".controls .background").css("background-color", "transparent");
         $(".controls .background2").css("background-color", "transparent");
@@ -96,7 +97,7 @@ function randomTemplate(imageSrc, callback) {
 
         }
         else if (templateNb == 6) {
-            var colors = new Array("#FFE504", "#FF8200", "#F70073", "#4AFF7E");
+            var colors = new Array("", "#FFE504", "#FF8200", "#F70073", "#4AFF7E");
             colorRand = Math.ceil(Math.random() * 4);
             $(".controls .background").css("background-color", colors[colorRand]);
             $(".controls .background2").css("background-color", colors[colorRand]);
@@ -104,15 +105,10 @@ function randomTemplate(imageSrc, callback) {
         }
 
         //REGLAGE DU TEXTE
-        if($("blockquote p").text().length > 100){
-            var newSizeB = parseFloat($("blockquote p").css("font-size"));
-            $("blockquote p").css("font-size", (newSizeB*0.7)+"px");
-
-            var newSizeC = parseFloat($("cite").css("font-size"));
-            $("cite").css("font-size", (newSizeC*0.7)+"px");
-
-            var newSizeLH = parseFloat($("blockquote").css("line-height"));
-            $("blockquote").css("line-height", (newSizeLH*0.7)+"px");
+        if ($("blockquote p").text().length > 100) {
+            $(".bloc1").addClass("longText");
+        } else {
+            $(".bloc1").removeClass("longText");
         }
 
         onresize();
@@ -144,7 +140,7 @@ $(function () {
     /*Logs*/
     var controlsOpen = false;
     $(".showlist").click(function () {
-        $( ".about" ).hide()
+        $(".about").hide()
         if (controlsOpen) {
             $(".controls").animate({
                 top: "100%",

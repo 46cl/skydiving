@@ -208,6 +208,12 @@ body {
   font-size: 40px;
   padding-top: 20px;
 }
+.template1 .bloc1.longText .bloc2 blockquote {
+  font-size: 60px !important;
+}
+.template1 .bloc1.longText .bloc2 cite {
+  font-size: 30px !important;
+}
 /*
  * Template 2
  */
@@ -233,6 +239,12 @@ body {
   background-color: #fff;
   right: 0;
 }
+.template2.longText .bloc2 blockquote {
+  font-size: 60px !important;
+}
+.template2.longText .bloc2 cite {
+  font-size: 30px !important;
+}
 /*
  * Template 3 - background b&w
  */
@@ -252,6 +264,13 @@ body {
   font-size: 40px;
   border-bottom: 10px solid;
   padding-bottom: 20px;
+}
+.template3.longText .bloc2 blockquote {
+  font-size: 50px !important;
+  line-height: 60px;
+}
+.template3.longText .bloc2 cite {
+  font-size: 30px !important;
 }
 /*
  * Template 4
@@ -279,6 +298,12 @@ body {
   padding-right: 20px;
   padding-bottom: 10px;
 }
+.template4.longText .bloc2 blockquote {
+  font-size: 45px !important;
+}
+.template4.longText .bloc2 cite {
+  font-size: 30px !important;
+}
 /*
  * Template 5
  */
@@ -301,6 +326,12 @@ body {
   padding-top: 30px;
   text-align: right;
   font-size: 40px;
+}
+.template5.longText .bloc2 blockquote {
+  font-size: 65px !important;
+}
+.template5.longText .bloc2 cite {
+  font-size: 30px !important;
 }
 /*
  * Template 6
@@ -332,6 +363,13 @@ body {
   text-align: left;
   font-size: 30px;
   text-transform: uppercase;
+}
+.template6.longText .bloc2 blockquote {
+  font-size: 55px !important;
+  line-height: 40px;
+}
+.template6.longText .bloc2 cite {
+  font-size: 20px !important;
 }
 /*Loader*/
 .loader {
