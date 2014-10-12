@@ -1,4 +1,4 @@
-package fhacktory
+package fhacktory.stream
 
 import com.google.common.eventbus.EventBus
 import com.google.common.eventbus.Subscribe
@@ -85,7 +85,7 @@ class Stream implements Runnable
         }
 
         // ...and quotes too short
-        if (quote.content.size() < 10) {
+        if (quote.content.size() < 15) {
             return false
         }
 
@@ -95,7 +95,7 @@ class Stream implements Runnable
         }
 
         // Filter out bait
-        for (String clickBait in ["clic", "clique", "découvrez", "tweet", "inscrit"]) {
+        for (String clickBait in ["clic", "clique", "découvrez", "tweet", "inscrit", "offre"]) {
             if (quote.content.toLowerCase().indexOf(clickBait) >= 0) {
                 return false
             }

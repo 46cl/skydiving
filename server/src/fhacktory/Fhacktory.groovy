@@ -9,10 +9,13 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer
 import fhacktory.api.Api
 import fhacktory.api.CorsFilter
 import fhacktory.api.ImageProxy
+import fhacktory.api.Log
 import fhacktory.crawling.Crawler
 import fhacktory.crawling.PostsFetcher
+import fhacktory.db.Database
 import fhacktory.flickr.FlickrClient
 import fhacktory.nlp.NounsExtractor
+import fhacktory.stream.Stream
 import groovy.transform.CompileStatic
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -49,11 +52,13 @@ class Fhacktory
         nounsExtractor.init()
         Stream stream = new Stream(eventBus, flickrClient, nounsExtractor)
         Api api = new Api()
+        Log log = new Log()
         PostsFetcher postsFetcher = new PostsFetcher(eventBus, database)
 
         eventBus.register(database)
         eventBus.register(api)
         eventBus.register(stream)
+        eventBus.register(log)
 
         HttpServer server = createHttpServer(api, new SseFeature(), new CorsFilter(), new ImageProxy())
 
@@ -102,6 +107,9 @@ class Fhacktory
 
         CrawlController controller = new CrawlController(config, pageFetcher, robotsTxtServer)
         controller.addSeed("http://fr.skyrock.com/blog/top.php")
+        controller.addSeed("http://redgirl51.bestmonde.com/bestway/show_bestway.asp?page=le-guide-de-skyblog-et-des-meilleurs-skyblogs&i_id=7133&s=")
+        controller.addSeed("http://clashrap.forumactif.com/t15373-les-meilleurs-skyblog")
+        controller.addSeed("http://lepiredeskyblog.wordpress.com/")
         controller.startNonBlocking(Crawler.class, numberOfCrawlers)
     }
 

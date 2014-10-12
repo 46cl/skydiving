@@ -1,8 +1,9 @@
 package fhacktory.crawling
 
 import com.google.common.eventbus.EventBus
-import fhacktory.Database
+import fhacktory.db.Database
 import fhacktory.data.Quote
+import fhacktory.event.CrawlingEvent
 import fhacktory.event.NewQuoteEvent
 import groovyx.net.http.ContentType
 import groovyx.net.http.HTTPBuilder
@@ -37,26 +38,35 @@ class PostsFetcher implements Runnable
 
             while (true) {
                 try {
-                    String host = hosts.poll()
+                    //String host = hosts.poll()
+                    String host = hosts.remove((int) (Math.random() * hosts.size()))
+
+                    eventBus.post(new CrawlingEvent([
+                            url: host
+                    ]))
 
                     if (host) {
                         logger.info("http://" + host + "/rss.xml")
                         def http = new HTTPBuilder("http://" + host)
                         http.get(path: '/rss.xml', contentType: ContentType.XML) { resp, xml ->
-                            def author = xml.channel.link.text().substring(7)
+                            String author = xml.channel.link.text().substring(7)
                             author = author.substring(0, author.size() - 13)
                             xml.item.each {
                                 def content = Jsoup.parse(it.description.text()).text()
                                 if (author && content) {
                                     Quote quote = new Quote([
-                                            content: content,
-                                            author : author
+                                            content: content.trim(),
+                                            author : author.trim()
                                     ])
                                     eventBus.post(new NewQuoteEvent([quote: quote]))
-                                    database.recordQuote(quote)
                                 }
                             }
                         }
+                    }
+
+                    if (hosts.size() == 0) {
+                        logger.info("Resetting post fetcher with host list", hosts.size())
+                        hosts.addAll(database.hosts())
                     }
                 } catch (Exception e) {
                     e.printStackTrace()

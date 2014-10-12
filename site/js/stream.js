@@ -1,13 +1,18 @@
 $(function () {
 
-    // var source = new EventSource("http://mayocatdev.radchaps.com/quotes"),
-    var source = new EventSource("http://localhost:8144/quotes")
-    queue = [];
+    //var source = new EventSource("http://localhost:8144/quotes")
+    var source = new EventSource("http://mayocatdev.radchaps.com/quotes"),
+        queue = [],
+        isPaused = false;
+
+    $("#pause").click(function(){
+        isPaused = !isPaused;
+    })
 
     $(".content").hide();
 
     function processQueue() {
-        if (queue.length > 0) {
+        if (queue.length > 0 && !isPaused) {
             var data = queue.shift();
 
             console.log(data.picture);
@@ -16,12 +21,6 @@ $(function () {
             $("blockquote p").text(data.content);
 
             $("cite").text(data.author);
-
-            for (var i = 1; i <= 6; i++) {
-                $(".content").removeClass("template" + i);
-            }
-            templateNb = Math.ceil(Math.random() * 5);
-            $(".content").addClass("template" + templateNb).show();
         }
     }
 

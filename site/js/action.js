@@ -5,6 +5,13 @@ function randomTemplate(imageSrc) {
 
     var templateNb = Math.ceil(Math.random() * 5);
     //templateNb = 6;
+
+    for (var i = 1; i <= 6; i++) {
+        $(".content").removeClass("template" + i);
+        $(".backgroundImage").addClass("template" + i);
+    }
+    templateNb = Math.ceil(Math.random() * 5);
+
     $(".content").addClass("template" + templateNb);
     $(".backgroundImage").addClass("template" + templateNb);
 
@@ -39,12 +46,14 @@ function randomTemplate(imageSrc) {
 
         // Reset template
 
-        $(".controls .background").css("background-color", "none");
-        $(".controls .background2").css("background-color", "none");
+        $(".controls .background").css("background-color", "transparent");
+        $(".controls .background2").css("background-color", "transparent");
         $(".content").css("color", "inherit");
-        $("blockquote p").css("background-color", "none");
+        $("blockquote p").css("background-color", "transparent");
+        $("blockquote").css("background-color", "transparent");
         $("cite").css("color", "inherit");
-        $(".bloc1").css("background-color", "none");
+        $("cite").css("background-color", "transparent");
+        $(".bloc1").css("background-color", "transparent");
 
         /*Application du template*/
         if (templateNb == 1) {
@@ -77,24 +86,16 @@ function randomTemplate(imageSrc) {
             $(".content").css("color", colors[colorRand]);
         }
 
-
-        /*Animation du font*/
-
-//        $(".content").fadeOut();
-        console.log(image.src);
-
-//        $(".content").fadeIn();
-
+        $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
     }
-
 
     if (imageSrc.indexOf("http") == 0) {
         jQuery.getJSON('//image2datauri.jit.su?cb=?', {
             url: imageSrc
         }, function (data) {
             image.src = data.data;
-            $(".backgroundImage").css("background-image", "url(" + data.data + ")");
             imageLoaded();
+
         })
     }
     else {
@@ -119,6 +120,7 @@ $(function () {
     /*Logs*/
     var controlsOpen = false;
     $(".showlist").click(function () {
+        $( ".about" ).hide()
         if (controlsOpen) {
             $(".controls").animate({
                 top: "100%",
@@ -135,6 +137,34 @@ $(function () {
             }, 400, function () {
                 controlsOpen = true;
             });
+        }
+    });
+
+    /*About*/
+    $(".showabout").click(function () {
+        $(".about").show()
+        if (controlsOpen) {
+            $(".controls").animate({
+                top: "100%",
+                marginTop: "-26px",
+                height: "26px"
+            }, 400, function () {
+                controlsOpen = false;
+            });
+            $(".controls .list").animate({
+                height: "100%"
+            }, 4000);
+        } else {
+            $(".controls").animate({
+                top: 0,
+                marginTop: 0,
+                height: "100%"
+            }, 400, function () {
+                controlsOpen = true;
+            });
+            $(".controls .list").animate({
+                height: "26px"
+            }, 4000);
         }
     });
 
