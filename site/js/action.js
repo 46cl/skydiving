@@ -1,4 +1,12 @@
+/*Placement du bloc*/
+function onresize() {
+    var marginTop = ($(".content").outerHeight() - $(".bloc1").outerHeight()) / 2;
+    $(".content").css("padding-top", marginTop);
+}
+
 function randomTemplate(imageSrc, callback) {
+
+    console.log("random template called");
 
     var colorThief = new ColorThief();
     var image = new Image();
@@ -7,16 +15,21 @@ function randomTemplate(imageSrc, callback) {
         $(".content").removeClass("template" + i);
         $(".backgroundImage").removeClass("template" + i);
     }
-    templateNb = Math.ceil(Math.random() * 6);
-    templateNb=6;
+
+
+    var templateNb = Math.ceil(Math.random() * 6);
+    //templateNb=6;
 
     $(".content").addClass("template" + templateNb);
     $(".backgroundImage").addClass("template" + templateNb);
 
     function imageLoaded() {
-        callback && callback.call();
+
+        console.log("Image loaded");
+
         $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
-        //$(".backgroundImage").css("background-image", "url(" + image.src + ")")
+
+        callback && callback.call();
 
         var palette = colorThief.getPalette(image, 9);
         var highS = 0;
@@ -45,7 +58,7 @@ function randomTemplate(imageSrc, callback) {
         colorDefComp = $c.complement(colorDef);
 
         // Reset template
-        console.log("Reset before" , templateNb);
+        console.log("Reset before", templateNb);
 
         $(".controls .background").css("background-color", "transparent");
         $(".controls .background2").css("background-color", "transparent");
@@ -55,19 +68,25 @@ function randomTemplate(imageSrc, callback) {
         $("cite").css("color", "inherit");
         $("cite").css("background-color", "transparent");
         $(".bloc1").css("background-color", "transparent");
+        $(".bloc1").css("background", "none");
 
 
         /*Application du template*/
         if (templateNb == 1) {
-            $(".controls .background").css("background-color", "#000")
-            $(".controls .background2").css("background-color", "#000")
-            $(".content").css("color", "#FFF")
+            $(".controls .background").css("background-color", "#000");
+            $(".controls .background2").css("background-color", "#000");
+            $(".content").css("color", "#FFF");
             $(".bloc1").css("background-color", "rgba(0, 0, 0, 0.5)");
+            var contentB = $("blockquote p").html().toLowerCase();
+            $("blockquote p").html(capitaliseFirstLetter(contentB));
+            var contentC = $("cite").html().toLowerCase();
+            $("cite").html(capitaliseFirstLetter(contentC));
         } else if (templateNb == 2) {
             $(".controls .background").css("background-color", colorDef);
             $(".controls .background2").css("background-color", colorDef);
             $("blockquote p").css("background-color", colorDef);
             $("cite").css("color", colorDef);
+            $("cite").css("background-color", "#FFF");
         } else if (templateNb == 3) {
             $(".controls .background").css("background-color", colorDefComp);
             $(".controls .background2").css("background-color", colorDefComp);
@@ -81,10 +100,10 @@ function randomTemplate(imageSrc, callback) {
             $(".controls .background").css("background-color", colorDefComp);
             $(".controls .background2").css("background-color", colorDefComp);
             $(".bloc1").css("background-color", colorDefComp);
-
+            $(".bloc1").css("color", colorDef);
         }
         else if (templateNb == 6) {
-            var colors = new Array("","#FFE504", "#FF8200", "#F70073", "#4AFF7E");
+            var colors = new Array("", "#FFE504", "#FF8200", "#F70073", "#4AFF7E");
             colorRand = Math.ceil(Math.random() * 4);
             $(".controls .background").css("background-color", colors[colorRand]);
             $(".controls .background2").css("background-color", colors[colorRand]);
@@ -92,15 +111,13 @@ function randomTemplate(imageSrc, callback) {
         }
 
         //REGLAGE DU TEXTE
-        if($("blockquote p").text().length > 100){
+        if ($("blockquote p").text().length > 100) {
             $(".bloc1").addClass("longText");
-        }else{
+        } else {
             $(".bloc1").removeClass("longText");
         }
 
-
-        //IMAGE
-        $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
+        onresize();
     }
 
     if (imageSrc.indexOf("http") == 0) {
@@ -109,7 +126,6 @@ function randomTemplate(imageSrc, callback) {
         }, function (data) {
             image.src = data.data;
             imageLoaded();
-
         })
     }
     else {
@@ -118,16 +134,15 @@ function randomTemplate(imageSrc, callback) {
     }
 }
 
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 $(function () {
 
     if (window.location.pathname === "/template.html") {
         randomTemplate("fond6.jpg");
-    }
-
-    /*Placement du bloc*/
-    function onresize() {
-        var marginTop = ($(".content").outerHeight() - $(".bloc1").outerHeight()) / 2;
-        $(".content").css("padding-top", marginTop);
     }
 
     $(window).resize(onresize);
@@ -136,7 +151,7 @@ $(function () {
     /*Logs*/
     var controlsOpen = false;
     $(".showlist").click(function () {
-        $( ".about" ).hide()
+        $(".about").hide()
         if (controlsOpen) {
             $(".controls").animate({
                 top: "100%",
