@@ -71,7 +71,7 @@ function randomTemplate(imageSrc, callback) {
         if (templateNb == 1) {
             $(".controls .background").css("background-color", "#000");
             $(".controls .background2").css("background-color", "#000");
-            $(".blockquote p").css("color", "#FFF");
+            $("blockquote p").css("color", "#FFF");
             $("cite").css("color", "#FFF");
             $(".bloc1").css("background-color", "rgba(0, 0, 0, 0.5)");
             var contentB = $("blockquote p").html().toLowerCase();
