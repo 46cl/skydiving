@@ -97,7 +97,7 @@ class Fhacktory
         config.setCrawlStorageFolder(crawlStorageFolder)
         config.setUserAgentString(
                 "Mozilla/5.0 (X11 Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36")
-        config.setPolitenessDelay(500)
+        config.setPolitenessDelay(250)
         config.setResumableCrawling(true)
         config.setFollowRedirects(true)
 

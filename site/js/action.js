@@ -60,10 +60,9 @@ function randomTemplate(imageSrc, callback) {
 
         $(".controls .background").css("background-color", "transparent");
         $(".controls .background2").css("background-color", "transparent");
-        $(".content").css("color", "inherit");
         $("blockquote p").css("background-color", "transparent");
         $("blockquote").css("background-color", "transparent");
-        $("cite").css("color", "inherit");
+        //$("cite").css("color", "inherit");
         $("cite").css("background-color", "transparent");
         $(".bloc1").css("background-color", "transparent");
         $(".bloc1").css("background", "none");
@@ -74,7 +73,7 @@ function randomTemplate(imageSrc, callback) {
             $(".controls .background").css("background-color", "#000");
             $(".controls .background2").css("background-color", "#000");
             $(".blockquote p").css("color", "#FFF");
-            $(".cite").css("color", "#FFF");
+            $("cite").css("color", "#FFF");
             $(".bloc1").css("background-color", "rgba(0, 0, 0, 0.5)");
             var contentB = $("blockquote p").html().toLowerCase();
             $("blockquote p").html(capitaliseFirstLetter(contentB));

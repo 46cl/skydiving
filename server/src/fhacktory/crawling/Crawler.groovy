@@ -50,7 +50,6 @@ class Crawler extends WebCrawler
             return
         }
 
-
         eventBus.post(new SkyblogFound([
                 host: domain
         ]))
