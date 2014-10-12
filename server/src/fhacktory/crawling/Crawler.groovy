@@ -5,6 +5,7 @@ import edu.uci.ics.crawler4j.crawler.Page
 import edu.uci.ics.crawler4j.crawler.WebCrawler
 import edu.uci.ics.crawler4j.url.WebURL
 import fhacktory.Fhacktory
+import fhacktory.event.CrawlingEvent
 import fhacktory.event.SkyblogFound
 import groovy.transform.CompileStatic
 import org.slf4j.Logger
@@ -35,9 +36,12 @@ class Crawler extends WebCrawler
     @Override
     public void visit(Page page)
     {
+        EventBus eventBus = Fhacktory.eventBus
         String url = page.getWebURL().getURL()
 
-        //logger.debug("Visiting {}", url)
+        eventBus.post(new CrawlingEvent([
+                url: url
+        ]))
 
         String domain = (page.webURL.subDomain.length() > 0 ? (page.webURL.subDomain + ".") : "") + page.webURL.domain
         boolean skyblog = domain.indexOf("skyrock.com") > 0 && !domain.startsWith("www") && !domain.startsWith("en")
@@ -46,7 +50,7 @@ class Crawler extends WebCrawler
             return
         }
 
-        EventBus eventBus = Fhacktory.eventBus
+
         eventBus.post(new SkyblogFound([
                 host: domain
         ]))

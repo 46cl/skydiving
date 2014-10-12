@@ -1,4 +1,4 @@
-package fhacktory
+package fhacktory.db
 
 import com.google.common.eventbus.Subscribe
 import fhacktory.data.Quote
@@ -25,16 +25,6 @@ class Database
             def rows = sql.rows("select * from skyblogs where host = ?", [e.host])
             if (rows.isEmpty()) {
                 sql.execute("insert into skyblogs (host) values (?)", [e.host])
-            }
-        })
-    }
-
-    void recordQuote(Quote quote)
-    {
-        sql.withTransaction({
-            def rows = sql.rows("select * from quotes where quote = ?", [quote.content])
-            if (rows.isEmpty()) {
-                sql.execute("insert into quotes (quote, author) values (?, ?)", [quote.content, quote.author])
             }
         })
     }

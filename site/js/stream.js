@@ -1,41 +1,41 @@
-$(function() {
+$(function () {
 
-  var source = new EventSource("http://mayocatdev.radchaps.com/quotes"),
-      queue = [];
+    //var source = new EventSource("http://localhost:8144/quotes")
+    var source = new EventSource("http://mayocatdev.radchaps.com/quotes"),
+        queue = [],
+        isPaused = false;
 
-  $(".content").hide();
+    $("#pause").click(function(){
+        isPaused = !isPaused;
+    })
 
-  function processQueue() {
-    if (queue.length > 0) {
-      var data = queue.shift();
-      $(".content").fadeOut();
-      $(".content").css("background-image", "url(" + data.picture + ")");
-      $(".content").fadeIn();
+    $(".content").hide();
 
-      $("blockquote p").text(data.content);
+    function processQueue() {
+        if (queue.length > 0 && !isPaused) {
+            var data = queue.shift();
 
-      $("cite").text(data.author);
+            console.log(data.picture);
+            randomTemplate(data.picture);
 
-      for (var i=1; i<=6; i++) {
-        $(".content").removeClass("template" + i);
-      }
-      templateNb = Math.ceil(Math.random()*5);
-      $(".content").addClass("template"+templateNb).show();
+            $("blockquote p").text(data.content);
+
+            $("cite").text(data.author);
+        }
     }
-  }
 
-  source.onmessage = function(e){
-    var data = JSON.parse(e.data);
-    (function(data) {
-      var image = new Image();
-      image.onload = function() {
-        queue.push(data);
-      };
-      image.src = data.picture;
-    })(data);
-  };
+    source.onmessage = function (e) {
+        var data = JSON.parse(e.data);
+        (function (data) {
+            var image = new Image();
+            image.onload = function () {
+                queue.push(data);
+            };
+            image.src = data.picture;
+        })(data);
+    };
 
-  window.setInterval(processQueue, 5000)
+    window.setInterval(processQueue, 10000)
 
 });
 

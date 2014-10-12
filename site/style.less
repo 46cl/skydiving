@@ -15,7 +15,7 @@
 
 }
 @font-face {
-    font-family: 'dorsaregular';
+    font-family: 'dorsa_regular';
     src: url('font/dorsa-regular-webfont.eot');
     src: url('font/dorsa-regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('font/dorsa-regular-webfont.woff2') format('woff2'),
@@ -59,6 +59,17 @@
     font-style: normal;
 }
 
+.allTypo{
+    position: absolute;
+    top: -500px;
+    left: -500px;
+    .montserratregular{font-family: 'montserratregular';}
+    .dorsaregular{font-family: 'dorsa_regular';}
+    .gilda_displayregular{font-family: 'gilda_displayregular';}
+    .arvobold{font-family: 'arvobold';}
+    .great_vibesregular{font-family: 'great_vibesregular';}
+}
+
 p, blockquote, cite{
     margin: 0;
     padding: 0;
@@ -67,6 +78,10 @@ p, blockquote, cite{
 }
 *{
     box-sizing: border-box;
+
+    transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
 }
 body{
     position: relative;
@@ -102,9 +117,6 @@ body{
     padding: 0 10px;
     margin-top: -@controlsHeight;
     overflow: hidden;
-    transition: opacity .3s ease-in-out;
-    -moz-transition: opacity .3s ease-in-out;
-    -webkit-transition: opacity .3s ease-in-out;
     opacity: 0.99;
     filter: alpha(opacity=99);
     *{
@@ -115,7 +127,8 @@ body{
     h2{
         font-size: @defaultFontSize;
         font-weight: normal;
-        margin: 0 5px 0 0;
+        margin: 0;
+        width: 250px;
     }
     .showlist{
         width: @controlsHeight;
@@ -124,6 +137,14 @@ body{
         filter: alpha(opacity=60);
         background: url("img/showlist.gif") no-repeat center center;
         cursor: pointer;
+    }
+    .showabout{
+        width: 30px;
+        height: @controlsHeight;
+        background: url("img/about.gif") no-repeat center center;
+        cursor: pointer;
+        position: absolute;
+        right: 0px;
     }
     .list{
         opacity: 0.6;
@@ -180,7 +201,7 @@ body{
  * Template 1
  */
 .template1{
-    font-family: 'great_vibesregular', cursive;
+    font-family: 'great_vibesregular';
     &.backgroundImage{
         -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
         -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
@@ -307,7 +328,7 @@ body{
  */
 
 .template5{
-    font-family: 'dorsaregular', sans-serif;
+    font-family: 'dorsa_regular', sans-serif;
     color: #fff;
 
     .bloc1 {
@@ -368,35 +389,44 @@ body{
     
 }
 /*Loader*/
-.spinner {
+.loader{
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -70px 0 0 -70px;
-    width: 140px;
-    height: 140px;
-    background-color:@defaultColor;
+    margin: -100px 0 0 -70px;
+    z-index: -6;
 
-    border-radius: 100%;  
-    -webkit-animation: scaleout 1.0s infinite ease-in-out;
-    animation: scaleout 1.0s infinite ease-in-out;
-}
+    text-align: center;
+    color:@defaultColor;
+    font-weight: bold;
 
-@-webkit-keyframes scaleout {
-  0% { -webkit-transform: scale(0.0) }
-  100% {
-    -webkit-transform: scale(1.0);
-    opacity: 0;
-  }
-}
+    .spinner {
+        width: 140px;
+        height: 140px;
+        margin-top: 30px;
+        background-color:@defaultColor;
 
-@keyframes scaleout {
-  0% { 
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 100% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-    opacity: 0;
-  }
+        border-radius: 100%;  
+        -webkit-animation: scaleout 1.0s infinite ease-in-out;
+        animation: scaleout 1.0s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes scaleout {
+      0% { -webkit-transform: scale(0.0) }
+      100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
+    @keyframes scaleout {
+      0% { 
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+      } 100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+      }
+    }
 }

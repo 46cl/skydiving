@@ -26,8 +26,6 @@ class NounsExtractorSpec extends Specification
                 "On ne se bat pas pour la meme chose ni avec la meme volonté, chacun sa croix chacun sa cause mais tout les destin sont liées. <3")
 
         then: "we have some nouns"
-        assert 1 == 2
-
-        println nouns
+        assert nouns.size() > 0
     }
 }
