@@ -6,7 +6,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'dorsaregular';
+  font-family: 'dorsa_regular';
   src: url('font/dorsa-regular-webfont.eot');
   src: url('font/dorsa-regular-webfont.eot?#iefix') format('embedded-opentype'), url('font/dorsa-regular-webfont.woff2') format('woff2'), url('font/dorsa-regular-webfont.woff') format('woff'), url('font/dorsa-regular-webfont.ttf') format('truetype'), url('font/dorsa-regular-webfont.svg#dorsaregular') format('svg');
   font-weight: normal;
@@ -33,6 +33,26 @@
   font-weight: normal;
   font-style: normal;
 }
+.allTypo {
+  position: absolute;
+  top: -500px;
+  left: -500px;
+}
+.allTypo .montserratregular {
+  font-family: 'montserratregular';
+}
+.allTypo .dorsaregular {
+  font-family: 'dorsa_regular';
+}
+.allTypo .gilda_displayregular {
+  font-family: 'gilda_displayregular';
+}
+.allTypo .arvobold {
+  font-family: 'arvobold';
+}
+.allTypo .great_vibesregular {
+  font-family: 'great_vibesregular';
+}
 p,
 blockquote,
 cite {
@@ -42,6 +62,9 @@ cite {
 }
 * {
   box-sizing: border-box;
+  transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
 }
 body {
   position: relative;
@@ -77,9 +100,6 @@ body {
   padding: 0 10px;
   margin-top: -26px;
   overflow: hidden;
-  transition: opacity 0.3s ease-in-out;
-  -moz-transition: opacity 0.3s ease-in-out;
-  -webkit-transition: opacity 0.3s ease-in-out;
   opacity: 0.99;
   filter: alpha(opacity=99);
 }
@@ -91,7 +111,8 @@ body {
 .controls h2 {
   font-size: 14px;
   font-weight: normal;
-  margin: 0 5px 0 0;
+  margin: 0;
+  width: 250px;
 }
 .controls .showlist {
   width: 26px;
@@ -100,6 +121,14 @@ body {
   filter: alpha(opacity=60);
   background: url("img/showlist.gif") no-repeat center center;
   cursor: pointer;
+}
+.controls .showabout {
+  width: 30px;
+  height: 26px;
+  background: url("img/about.gif") no-repeat center center;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
 }
 .controls .list {
   opacity: 0.6;
@@ -140,7 +169,7 @@ body {
  * Template 1
  */
 .template1 {
-  font-family: 'great_vibesregular', cursive;
+  font-family: 'great_vibesregular';
 }
 .template1.backgroundImage {
   -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
@@ -245,7 +274,7 @@ body {
  * Template 5
  */
 .template5 {
-  font-family: 'dorsaregular', sans-serif;
+  font-family: 'dorsa_regular', sans-serif;
   color: #fff;
 }
 .template5 .bloc1 {
@@ -296,13 +325,20 @@ body {
   text-transform: uppercase;
 }
 /*Loader*/
-.spinner {
+.loader {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -70px 0 0 -70px;
+  margin: -100px 0 0 -70px;
+  z-index: -6;
+  text-align: center;
+  color: #e64b3f;
+  font-weight: bold;
+}
+.loader .spinner {
   width: 140px;
   height: 140px;
+  margin-top: 30px;
   background-color: #e64b3f;
   border-radius: 100%;
   -webkit-animation: scaleout 1s infinite ease-in-out;
