@@ -1,24 +1,33 @@
+/*Placement du bloc*/
+function onresize() {
+    var marginTop = ($(".content").outerHeight() - $(".bloc1").outerHeight()) / 2;
+    $(".content").css("padding-top", marginTop);
+}
+
 function randomTemplate(imageSrc, callback) {
+
+    console.log("random template called");
 
     var colorThief = new ColorThief();
     var image = new Image();
-
-    var templateNb = Math.ceil(Math.random() * 5);
-    //templateNb = 5;
 
     for (var i = 1; i <= 6; i++) {
         $(".content").removeClass("template" + i);
         $(".backgroundImage").removeClass("template" + i);
     }
-    templateNb = Math.ceil(Math.random() * 5);
+    var templateNb = Math.ceil(Math.random() * 5);
+    //templateNb = 5;
 
     $(".content").addClass("template" + templateNb);
     $(".backgroundImage").addClass("template" + templateNb);
 
     function imageLoaded() {
-        callback && callback.call();
+
+        console.log("Image loaded");
+
         $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
-        //$(".backgroundImage").css("background-image", "url(" + image.src + ")")
+
+        callback && callback.call();
 
         var palette = colorThief.getPalette(image, 9);
         var highS = 0;
@@ -57,6 +66,7 @@ function randomTemplate(imageSrc, callback) {
         $("cite").css("color", "inherit");
         $("cite").css("background-color", "transparent");
         $(".bloc1").css("background-color", "transparent");
+        $(".bloc1").css("background", "none");
 
 
         /*Application du template*/
@@ -103,12 +113,9 @@ function randomTemplate(imageSrc, callback) {
 
             var newSizeLH = parseFloat($("blockquote").css("line-height"));
             $("blockquote").css("line-height", (newSizeLH*0.7)+"px");
-
         }
 
-
-        //IMAGE
-        $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
+        onresize();
     }
 
     if (imageSrc.indexOf("http") == 0) {
@@ -117,7 +124,6 @@ function randomTemplate(imageSrc, callback) {
         }, function (data) {
             image.src = data.data;
             imageLoaded();
-
         })
     }
     else {
@@ -130,12 +136,6 @@ $(function () {
 
     if (window.location.pathname === "/template.html") {
         randomTemplate("fond6.jpg");
-    }
-
-    /*Placement du bloc*/
-    function onresize() {
-        var marginTop = ($(".content").outerHeight() - $(".bloc1").outerHeight()) / 2;
-        $(".content").css("padding-top", marginTop);
     }
 
     $(window).resize(onresize);
