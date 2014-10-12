@@ -63,6 +63,7 @@ p, blockquote, cite{
     margin: 0;
     padding: 0;
     font-style: normal;
+    word-break: break-word;
 }
 *{
     box-sizing: border-box;
@@ -131,11 +132,23 @@ body{
     }
 
     .about {
-        opacity: 0.6;
-        margin-left: 282px;
-        width: 300px;
+        left: 250px + 26px ;
+        width: 400px;
+        top: 46px;
+        position: absolute;
+
+        .logo {
+            font-family: georgia, serif;
+            font-style: italic;
+
+        }
+        p {
+            opacity: 0.6;
+        }
         a {
             color: white;
+            text-decoration: none;
+            opacity: 1;
         }
     }
 
@@ -182,7 +195,7 @@ body{
 
         .bloc2{
             border: 1px solid #FFF;
-            padding: 50px;
+            padding: 40px 40px 20px 40px;
 
             blockquote{
                 font-size: 78px;
@@ -193,6 +206,7 @@ body{
                 width: 100%;
                 text-align: right;
                 font-size: 40px;
+                padding-top: 20px;
             }
         }
     
@@ -282,6 +296,7 @@ body{
         display: inline-block;
         width: 100%;
         text-align: right;
+        padding-top: 20px;
         font-size: 40px;
         padding-right: 20px;
         padding-bottom: 10px;
@@ -301,9 +316,9 @@ body{
     }
 
     blockquote{
-        padding-top: 60px;
-        padding-right: 60px;
-        padding-left: 60px;
+        padding-top: 40px;
+        padding-right: 40px;
+        padding-left: 40px;
         font-size: 80px;
         text-align: center;
     }
@@ -311,8 +326,9 @@ body{
     cite{
         display: inline-block;
         width: 100%;
-        padding-right: 60px;
-        padding-bottom: 60px;
+        padding-right: 40px;
+        padding-bottom: 40px;
+        padding-top: 30px;
         text-align: right;
         font-size: 40px;
     }
@@ -338,11 +354,13 @@ body{
 
     blockquote{
         font-size: 70px;
+        line-height: 64px;
         text-align: left;
     }
 
     cite{
         display: inline-block;
+        padding-top: 40px;
         text-align: left;
         font-size: 30px;
         text-transform: uppercase;

@@ -4,7 +4,7 @@ $(function() {
 
     /*Choix du template*/
     //templateNb = Math.ceil(Math.random()*5);
-    templateNb = 6;
+    templateNb = 1;
     $(".content").addClass("template"+templateNb);
     $(".backgroundImage").addClass("template"+templateNb);
 
