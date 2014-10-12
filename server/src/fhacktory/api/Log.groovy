@@ -10,6 +10,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import javax.ws.rs.GET
+import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import java.util.concurrent.atomic.AtomicLong
@@ -17,6 +18,7 @@ import java.util.concurrent.atomic.AtomicLong
 /**
  * @version $Id$
  */
+@Path("/logs")
 class Log
 {
     SseBroadcaster broadcaster = new SseBroadcaster() {
@@ -56,6 +58,7 @@ class Log
     @Produces("text/event-stream")
     public EventOutput getMessageStream()
     {
+        logger.info("--> Logs connection received.");
         final EventOutput eventOutput = new EventOutput();
         broadcaster.add(eventOutput);
         return eventOutput;

@@ -60,7 +60,7 @@ class Fhacktory
         eventBus.register(stream)
         eventBus.register(log)
 
-        HttpServer server = createHttpServer(api, new SseFeature(), new CorsFilter(), new ImageProxy())
+        HttpServer server = createHttpServer(api, log, new SseFeature(), new CorsFilter(), new ImageProxy())
 
         // Start crawler
         startCrawler(folder)

@@ -11,20 +11,18 @@ function randomTemplate(imageSrc, callback) {
     var colorThief = new ColorThief();
     var image = new Image();
 
-    for (var i = 1; i <= 6; i++) {
-        $(".content").removeClass("template" + i);
-        $(".backgroundImage").removeClass("template" + i);
-    }
-
-    var templateNb = Math.ceil(Math.random() * 6);
-    //templateNb=6;
-
-    $(".content").addClass("template" + templateNb);
-    $(".backgroundImage").addClass("template" + templateNb);
-
     function imageLoaded() {
 
-        console.log("Image loaded");
+        for (var i = 1; i <= 6; i++) {
+            $(".content").removeClass("template" + i);
+            $(".backgroundImage").removeClass("template" + i);
+        }
+
+        var templateNb = Math.ceil(Math.random() * 6);
+        //templateNb=6;
+
+        $(".content").addClass("template" + templateNb);
+        $(".backgroundImage").addClass("template" + templateNb);
 
         $(".backgroundImage").css("background-image", "url(" + imageSrc + ")");
 

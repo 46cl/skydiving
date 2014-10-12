@@ -2,6 +2,7 @@ $(function () {
 
     //var source = new EventSource("http://localhost:8144/quotes")
     var source = new EventSource("http://mayocatdev.radchaps.com/quotes"),
+        logs = new EventSource("http://localhost:8144/logs"),
         queue = [],
         isPaused = false;
 
@@ -31,6 +32,17 @@ $(function () {
             image.src = data.picture;
         })(data);
     };
+
+    logs.onmessage = function(e) {
+        console.log(e);
+        var log = e.data
+        $("#logs").prepend($("<br />"));
+        $("#logs").prepend($("<span/>").text(log));
+
+        if ($("#logs span").length > 200) {
+
+        }
+    }
 
     window.setInterval(processQueue, 10000)
 
