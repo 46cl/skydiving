@@ -11,6 +11,7 @@ function randomTemplate(imageSrc, callback) {
     var colorThief = new ColorThief();
     var image = new Image();
 
+
     function imageLoaded() {
 
         for (var i = 1; i <= 6; i++) {
@@ -72,7 +73,8 @@ function randomTemplate(imageSrc, callback) {
         if (templateNb == 1) {
             $(".controls .background").css("background-color", "#000");
             $(".controls .background2").css("background-color", "#000");
-            $(".content").css("color", "#FFF");
+            $(".blockquote p").css("color", "#FFF");
+            $(".cite").css("color", "#FFF");
             $(".bloc1").css("background-color", "rgba(0, 0, 0, 0.5)");
             var contentB = $("blockquote p").html().toLowerCase();
             $("blockquote p").html(capitaliseFirstLetter(contentB));
@@ -82,29 +84,34 @@ function randomTemplate(imageSrc, callback) {
             $(".controls .background").css("background-color", colorDef);
             $(".controls .background2").css("background-color", colorDef);
             $("blockquote p").css("background-color", colorDef);
+            $("blockquote p").css("color", "#FFF");
             $("cite").css("color", colorDef);
             $("cite").css("background-color", "#FFF");
         } else if (templateNb == 3) {
             $(".controls .background").css("background-color", colorDefComp);
             $(".controls .background2").css("background-color", colorDefComp);
-            $(".content").css("color", colorDefComp);
+            $("blockquote p").css("color", colorDefComp);
+            $("cite").css("color", colorDefComp);
         } else if (templateNb == 4) {
             $(".controls .background").css("background-color", colorDef);
             $(".controls .background2").css("background-color", colorDef);
-            $(".content").css("color", colorDef);
+            $("blockquote p").css("color", colorDef);
+            $("cite").css("color", colorDef);
             $(".bloc1").css("background", "url(img/motif.png)");
         } else if (templateNb == 5) {
             $(".controls .background").css("background-color", colorDefComp);
             $(".controls .background2").css("background-color", colorDefComp);
             $(".bloc1").css("background-color", colorDefComp);
-            $(".bloc1").css("color", colorDef);
+            $("blockquote p").css("color", colorDef);
+            $("cite").css("color", colorDef);
         }
         else if (templateNb == 6) {
             var colors = new Array("", "#FFE504", "#FF8200", "#F70073", "#4AFF7E");
             colorRand = Math.ceil(Math.random() * 4);
             $(".controls .background").css("background-color", colors[colorRand]);
             $(".controls .background2").css("background-color", colors[colorRand]);
-            $(".content").css("color", colors[colorRand]);
+            $("blockquote p").css("color", colors[colorRand]);
+            $("cite").css("color", colors[colorRand]);
         }
 
         //REGLAGE DU TEXTE
