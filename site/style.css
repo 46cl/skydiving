@@ -175,6 +175,14 @@ body {
   filter: alpha(opacity=60);
   background-color: #e64b3f;
 }
+.controls .keyword {
+  height: 26px;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  position: absolute;
+  right: 10px;
+  text-align: right;
+}
 /* TEMPLATES */
 /*
  * Template 1
